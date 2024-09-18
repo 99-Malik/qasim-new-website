@@ -1,16 +1,45 @@
+import { cn } from "@/lib/utils";
 import React from "react";
 
-export default function WhyChooseUsSection() {
+export default function WhyChooseUsSection({ company }) {
   return (
     <div className="relative flex items-center justify-center bg-fixed bg-[url(/tools.jpg)] bg-center bg-cover bg-no-repeat w-full">
       <div className="flex items-center justify-center w-full bg-black/75">
         <div className="w-full flex flex-col gap-10 items-center justify-center max-w-7xl px-5 pt-48 pb-20">
           <div className="flex flex-col items-center gap-2 justify-center text-center">
-            <h4 className="text-primary font-semibold">Our Qualities</h4>
+            <h4
+              className={cn(
+                "font-semibold",
+                company === "Siemens"
+                  ? "text-siemensPrimary"
+                  : company === "Bosch"
+                  ? "text-boschPrimary"
+                  : company === "Samsung"
+                  ? "text-samsungPrimary"
+                  : company === "LG"
+                  ? "text-lgPrimary"
+                  : "text-primary"
+              )}
+            >
+              Our Qualities
+            </h4>
             <h1 className="text-white font-bold text-4xl">Why Choose Us?</h1>
           </div>
           <div className="w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            <div className="flex flex-col items-center justify-center bg-primary rounded-md text-white p-10 text-center gap-2">
+            <div
+              className={cn(
+                "flex flex-col items-center justify-center rounded-md text-white p-10 text-center gap-2",
+                company === "Siemens"
+                  ? "bg-siemensPrimary"
+                  : company === "Bosch"
+                  ? "bg-boschPrimary"
+                  : company === "Samsung"
+                  ? "bg-samsungPrimary"
+                  : company === "LG"
+                  ? "bg-lgPrimary"
+                  : "bg-primary"
+              )}
+            >
               {expertTechnicians}
               <span className="font-semibold text-xl">Expert Technicians</span>
               <span className="text-white/80 text-xs lg:text-sm">
@@ -19,7 +48,20 @@ export default function WhyChooseUsSection() {
                 appliances.
               </span>
             </div>
-            <div className="flex flex-col items-center justify-center bg-primary rounded-md text-white p-10 text-center gap-2">
+            <div
+              className={cn(
+                "flex flex-col items-center justify-center rounded-md text-white p-10 text-center gap-2",
+                company === "Siemens"
+                  ? "bg-siemensPrimary"
+                  : company === "Bosch"
+                  ? "bg-boschPrimary"
+                  : company === "Samsung"
+                  ? "bg-samsungPrimary"
+                  : company === "LG"
+                  ? "bg-lgPrimary"
+                  : "bg-primary"
+              )}
+            >
               {quality}
               <span className="font-semibold text-xl">Quality of Service</span>
               <span className="text-white/80 text-xs lg:text-sm">
@@ -28,7 +70,20 @@ export default function WhyChooseUsSection() {
                 your appliances are restored to their optimal condition.
               </span>
             </div>
-            <div className="flex flex-col items-center justify-center bg-primary rounded-md text-white p-10 text-center gap-2">
+            <div
+              className={cn(
+                "flex flex-col items-center justify-center rounded-md text-white p-10 text-center gap-2",
+                company === "Siemens"
+                  ? "bg-siemensPrimary"
+                  : company === "Bosch"
+                  ? "bg-boschPrimary"
+                  : company === "Samsung"
+                  ? "bg-samsungPrimary"
+                  : company === "LG"
+                  ? "bg-lgPrimary"
+                  : "bg-primary"
+              )}
+            >
               {fastService}
               <span className="font-semibold text-xl">Fast Response time</span>
               <span className="text-white/80 text-xs lg:text-sm">
@@ -37,7 +92,20 @@ export default function WhyChooseUsSection() {
                 importance of your appliances and strive to provide timely.
               </span>
             </div>
-            <div className="flex flex-col items-center justify-center bg-primary rounded-md text-white p-10 text-center gap-2">
+            <div
+              className={cn(
+                "flex flex-col items-center justify-center rounded-md text-white p-10 text-center gap-2",
+                company === "Siemens"
+                  ? "bg-siemensPrimary"
+                  : company === "Bosch"
+                  ? "bg-boschPrimary"
+                  : company === "Samsung"
+                  ? "bg-samsungPrimary"
+                  : company === "LG"
+                  ? "bg-lgPrimary"
+                  : "bg-primary"
+              )}
+            >
               {affordablePrice}
               <span className="font-semibold text-xl">Affordable Pricing</span>
               <span className="text-white/80 text-xs lg:text-sm">
@@ -46,7 +114,20 @@ export default function WhyChooseUsSection() {
                 affordable rates, ensuring that you get value for your money.
               </span>
             </div>
-            <div className="flex flex-col items-center justify-center bg-primary rounded-md text-white p-10 text-center gap-2">
+            <div
+              className={cn(
+                "flex flex-col items-center justify-center rounded-md text-white p-10 text-center gap-2",
+                company === "Siemens"
+                  ? "bg-siemensPrimary"
+                  : company === "Bosch"
+                  ? "bg-boschPrimary"
+                  : company === "Samsung"
+                  ? "bg-samsungPrimary"
+                  : company === "LG"
+                  ? "bg-lgPrimary"
+                  : "bg-primary"
+              )}
+            >
               {wideRange}
               <span className="font-semibold text-xl">
                 Wide Range of Services
@@ -58,7 +139,20 @@ export default function WhyChooseUsSection() {
                 they have you covered.
               </span>
             </div>
-            <div className="flex flex-col items-center justify-center bg-primary rounded-md text-white p-10 text-center gap-2">
+            <div
+              className={cn(
+                "flex flex-col items-center justify-center rounded-md text-white p-10 text-center gap-2",
+                company === "Siemens"
+                  ? "bg-siemensPrimary"
+                  : company === "Bosch"
+                  ? "bg-boschPrimary"
+                  : company === "Samsung"
+                  ? "bg-samsungPrimary"
+                  : company === "LG"
+                  ? "bg-lgPrimary"
+                  : "bg-primary"
+              )}
+            >
               {satisfaction}
               <span className="font-semibold text-xl">
                 Customer Satisfaction

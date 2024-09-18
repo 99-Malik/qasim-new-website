@@ -1,6 +1,7 @@
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 
-export default function KeyFeatures() {
+export default function KeyFeatures({ company }) {
   return (
     <section className="bg-white w-full flex items-center justify-center">
       <div className="w-full max-w-7xl px-5 py-10 gap-10 grid place-items-center lg:grid-cols-[0.67fr_1fr]">
@@ -13,7 +14,20 @@ export default function KeyFeatures() {
         />
         <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-2">
-            <span className="font-semibold text-lg text-primary">
+            <span
+              className={cn(
+                "font-semibold text-lg",
+                company === "Siemens"
+                  ? "text-siemensPrimary"
+                  : company === "Bosch"
+                  ? "text-boschPrimary"
+                  : company === "Samsung"
+                  ? "text-samsungPrimary"
+                  : company === "LG"
+                  ? "text-lgPrimary"
+                  : "text-primary"
+              )}
+            >
               Key Features
             </span>
             <h1 className="text-3xl font-bold sm:text-4xl">

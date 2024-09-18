@@ -9,9 +9,22 @@ const logoFont = Protest_Guerrilla({
   weight: "400",
 });
 
-export default function Footer() {
+export default function Footer({ company }) {
   return (
-    <footer className="w-full flex items-center justify-center bg-secondary text-white">
+    <footer
+      className={cn(
+        "w-full flex items-center justify-center text-white",
+        company === "Siemens"
+          ? "bg-siemensPrimary"
+          : company === "Bosch"
+          ? "bg-boschSecondary"
+          : company === "Samsung"
+          ? "bg-samsungPrimary"
+          : company === "LG"
+          ? "bg-lgSecondary"
+          : "bg-secondary"
+      )}
+    >
       <div className="max-w-7xl w-full px-5 pt-10 flex flex-col gap-3 items-center justify-center text-center">
         <Link
           href="/"

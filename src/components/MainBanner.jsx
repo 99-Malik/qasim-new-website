@@ -1,23 +1,69 @@
 import CallAndWhatsappButton from "./buttons/CallAndWhatsappButton";
 
-export default function MainBanner() {
+export default function MainBanner({ company }) {
   return (
     <div className="h-[40rem] w-full flex bg-[url(/mainbanner.jpg)] bg-fixed bg-cover bg-center bg-no-repeat items-center justify-center">
       <div className="w-full relative pt-[100px] h-full bg-black/75 text-white flex justify-center">
         <div className="flex flex-col gap-5 items-center text-center px-5 py-10">
           <p className="text-lg uppercase font-semibold">
-            Best <span className="text-primary">Appliances</span> repairs
+            Best{" "}
+            <span
+              className={
+                company === "Siemens"
+                  ? "text-siemensPrimary"
+                  : company === "Bosch"
+                  ? "text-boschPrimary"
+                  : company === "Samsung"
+                  ? "text-white px-1"
+                  : company === "LG"
+                  ? "text-lgPrimary"
+                  : "text-primary"
+              }
+            >
+              Appliances
+            </span>{" "}
+            repairs
           </p>
           <h1 className="text-3xl lg:text-5xl font-bold">
-            We Are <span className="text-primary">Skilled</span> & Experienced
+            We Are{" "}
+            <span
+              className={
+                company === "Siemens"
+                  ? "text-siemensPrimary"
+                  : company === "Bosch"
+                  ? "text-boschPrimary"
+                  : company === "Samsung"
+                  ? "text-white px-1"
+                  : company === "LG"
+                  ? "text-lgPrimary"
+                  : "text-primary"
+              }
+            >
+              Skilled
+            </span>{" "}
+            & Experienced
             <br />
-            <span className="text-primary">Professionals</span>
+            <span
+              className={
+                company === "Siemens"
+                  ? "text-siemensPrimary"
+                  : company === "Bosch"
+                  ? "text-boschPrimary"
+                  : company === "Samsung"
+                  ? "text-white px-1"
+                  : company === "LG"
+                  ? "text-lgPrimary"
+                  : "text-primary"
+              }
+            >
+              Professionals
+            </span>
           </h1>
           <p className="max-w-4xl text-white/90">
             With a highly qualified team of professionals, we deliver expert
             services with precision, dedication, and commitment.
           </p>
-          <CallAndWhatsappButton />
+          <CallAndWhatsappButton company={company} />
         </div>
         <div className="absolute -bottom-1 z-10 w-full rotate-180">
           {bottomSvg}

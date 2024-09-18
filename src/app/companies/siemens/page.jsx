@@ -10,14 +10,14 @@ import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 export default function Home() {
   return (
     <>
-      <Header />
-      <MainBanner />
-      <AboutSection />
-      <WhyChooseUsSection />
-      <ServicesSection />
-      <ContactSection />
-      <KeyFeatures />
-      <Footer />
+      <Header company="Siemens" />
+      <MainBanner company="Siemens" />
+      <AboutSection company="Siemens" />
+      <WhyChooseUsSection company="Siemens" />
+      <ServicesSection company="Siemens" />
+      <ContactSection company="Siemens" />
+      <KeyFeatures company="Siemens" />
+      <Footer company="Siemens" />
     </>
   );
 }
