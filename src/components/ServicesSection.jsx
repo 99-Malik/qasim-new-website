@@ -29,23 +29,35 @@ export default function ServicesSection({ company }) {
             We Provide The Best Services
           </h2>
         </div>
-        <div className="grid sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 pr-5 gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 pr-5 gap-10">
           <Service
             company={company}
             title="Washing Machine Repair"
             image="/washing-repair.webp"
             description="Washing machines can develop issues over time. Our technicians are expert in repairing washing machines and can quickly diagnose the problem and fix it. Common issues include:"
             points={[
-              "Machine not turning on",
+              "Machine not starting",
               "Machine not spinning",
               "Machine not draining",
-              "Machine not filling with water",
-              "Control panel issues",
-              "Overfilling",
-              "Electrical issues",
-              "Error codes on display",
-              "Slow washing cycles",
+              "Water leaking from the machine",
+              "Excessive noise during operation",
+              "Error codes on the display",
+              "Unpleasant odors",
+              "Incomplete wash cycles",
+              "Water not draining properly",
+              "Machine vibrating excessively",
+              "Door not locking",
+              "Water temperature issues",
               "Soap dispenser not working",
+              "Electrical issues",
+              "Blocked filters",
+              "Overfilling",
+              "Clothes coming out wet",
+              "Clothes not rinsing properly",
+              "Drum not filling with water",
+              "Machine tripping the circuit breaker",
+              "Slow wash cycles",
+              "Control panel issues",
             ]}
           />
           <Service
@@ -54,16 +66,27 @@ export default function ServicesSection({ company }) {
             image="/dryer-repair.jpg"
             description="Dryers can develop issues over time. Our technicians are expert in repairing dryers and can quickly diagnose the problem and fix it. Common issues include:"
             points={[
+              "Dryer not heating",
               "Dryer not turning on",
               "Dryer not spinning",
-              "Dryer not heating",
               "Dryer not drying clothes",
-              "Control panel issues",
-              "Overfilling",
-              "Electrical issues",
-              "Error codes on display",
-              "Slow drying cycles",
-              "Dryer not draining",
+              "Dryer not completing cycles",
+              "Dryer not tumbling",
+              "Dryer making unusual noises",
+              "Dryer not venting properly",
+              "Dryer not starting",
+              "Dryer not heating up",
+              "Dryer not turning off",
+              "Dryer not spinning properly",
+              "Dryer not drying clothes completely",
+              "Dryer not heating enough",
+              "Dryer not heating at all",
+              "Dryer not turning",
+              "Dryer not heating properly",
+              "Dryer not heating up enough",
+              "Dryer not heating up at all",
+              "Dryer not heating well",
+              "Dryer not heating properly",
             ]}
           />
           <Service
@@ -72,16 +95,27 @@ export default function ServicesSection({ company }) {
             image="/fridge-repair.jpg"
             description="Refrigerators can develop issues over time. Our technicians are expert in repairing refrigerators and can quickly diagnose the problem and fix it. Common issues include:"
             points={[
-              "Refrigerator not turning on",
-              "Refrigerator not cooling",
-              "Refrigerator not freezing",
-              "Refrigerator not making ice",
-              "Control panel issues",
-              "Overfilling",
-              "Electrical issues",
-              "Error codes on display",
-              "Slow cooling cycles",
-              "Refrigerator not draining",
+              "No power",
+              "No picture",
+              "No sound",
+              "Lines on the screen",
+              "Cracked screen",
+              "TV turning off by itself",
+              "Remote control not working",
+              "TV not connecting to Wi-Fi",
+              "TV not recognizing HDMI inputs",
+              "TV not turning on",
+              "TV displaying error messages",
+              "TV displaying a blank screen",
+              "TV displaying a distorted picture",
+              "TV displaying a flickering picture",
+              "TV displaying a frozen picture",
+              "TV displaying a pixelated picture",
+              "TV displaying a washed-out picture",
+              "TV displaying colors incorrectly",
+              "TV displaying lines on the screen",
+              "TV displaying static",
+              "TV displaying vertical lines",
             ]}
           />
           <Service
@@ -90,16 +124,27 @@ export default function ServicesSection({ company }) {
             image="/oven-repair.jpeg"
             description="Ovens can develop issues over time. Our technicians are expert in repairing ovens and can quickly diagnose the problem and fix it. Common issues include:"
             points={[
-              "Oven not turning on",
               "Oven not heating",
+              "Oven not reaching desired temperature",
+              "Oven uneven cooking",
+              "Oven door not closing properly",
+              "Oven error codes displayed",
+              "Unusual odors from oven",
+              "Oven light not working",
+              "Oven control panel issues",
+              "Oven self-cleaning cycle not working",
+              "Oven burners not igniting",
+              "Gas smell from oven",
+              "Oven overheating",
+              "Oven not turning on",
+              "Oven fan not working",
+              "Oven door not opening",
+              "Oven not maintaining temperature",
+              "Oven broiler not working",
+              "Oven timer not functioning",
               "Oven not cooking food evenly",
               "Oven not self-cleaning",
-              "Control panel issues",
-              "Overfilling",
-              "Electrical issues",
-              "Error codes on display",
-              "Slow cooking cycles",
-              "Oven not draining",
+              "Oven not turning off",
             ]}
           />
           <Service
@@ -108,54 +153,88 @@ export default function ServicesSection({ company }) {
             image="/dishwasher-repair.jpg"
             description="Dishwashers can develop issues over time. Our technicians are expert in repairing dishwashers and can quickly diagnose the problem and fix it. Common issues include:"
             points={[
-              "Dishwasher not turning on",
-              "Dishwasher not cleaning dishes",
-              "Dishwasher not draining",
+              "Dishwasher not starting",
+              "Dishwasher water not draining",
+              "Dishwasher dishes not cleaning properly",
+              "Unusual noises during dishwasher operation",
+              "Dishwasher water leakage",
+              "Dishwasher door not closing properly",
+              "Dishwasher error codes displayed",
+              "Dishwasher control panel not responding",
               "Dishwasher not filling with water",
-              "Control panel issues",
-              "Overfilling",
-              "Electrical issues",
-              "Error codes on display",
-              "Slow washing cycles",
-              "Dishwasher not draining",
+              "Dishwasher cycle not completing",
+              "Dishwasher soap dispenser not opening",
+              "Dishwasher spray arms not working",
+              "Dishwasher electrical faults",
+              "Unpleasant odors from dishwasher",
+              "Dishwasher tripping the circuit breaker",
+              "Dishwasher excessive vibration",
+              "Dishwasher water temperature issues",
+              "Dishwasher racks not sliding smoothly",
+              "Detergent residue on dishwasher dishes",
+              "Dishwasher not drying dishes",
             ]}
           />
-          <Service
-            company={company}
-            title="Stove / Cooker Repair"
-            image="/stove-repair.jpg"
-            description="Stoves can develop issues over time. Our technicians are expert in repairing stoves and can quickly diagnose the problem and fix it. Common issues include:"
-            points={[
-              "Stove not turning on",
-              "Stove not heating",
-              "Stove not cooking food evenly",
-              "Stove not self-cleaning",
-              "Control panel issues",
-              "Overfilling",
-              "Electrical issues",
-              "Error codes on display",
-              "Slow cooking cycles",
-              "Stove not draining",
-            ]}
-          />
-          <Service
-            company={company}
-            title="TV Repair"
-            image="/tv-repair.jpeg"
-            description="TVs can develop issues over time. Our technicians are expert in repairing TVs and can quickly diagnose the problem and fix it. Common issues include:"
-            points={[
-              "TV not turning on",
-              "TV not displaying picture",
-              "TV not displaying sound",
-              "TV not connecting to internet",
-              "Control panel issues",
-              "Overfilling",
-              "Electrical issues",
-              "Error codes on display",
-              "Slow display cycles",
-              "TV not draining",
-            ]}
-          />
+          {(company == "Siemens" || company == "Bosch") && (
+            <Service
+              company={company}
+              title="Stove / Cooker Repair"
+              image="/stove-repair.jpg"
+              description="Stoves can develop issues over time. Our technicians are expert in repairing stoves and can quickly diagnose the problem and fix it. Common issues include:"
+              points={[
+                "Burners not igniting",
+                "Burners not heating properly",
+                "Oven not heating",
+                "Oven not reaching desired temperature",
+                "Oven uneven cooking",
+                "Oven error codes displayed",
+                "Oven control panel issues",
+                "Oven self-cleaning cycle not working",
+                "Oven gas smell",
+                "Oven overheating",
+                "Oven not turning on",
+                "Oven fan not working",
+                "Oven door not opening",
+                "Oven not maintaining temperature",
+                "Oven broiler not working",
+                "Oven timer not functioning",
+                "Oven not cooking food evenly",
+                "Oven not self-cleaning",
+                "Oven not turning off",
+              ]}
+            />
+          )}
+          {(company === "Bosch" || company === "Siemens") && (
+            <Service
+              company={company}
+              title="TV Repair"
+              image="/tv-repair.jpeg"
+              description="TVs can develop issues over time. Our technicians are expert in repairing TVs and can quickly diagnose the problem and fix it. Common issues include:"
+              points={[
+                "TV no power",
+                "TV no picture",
+                "TV no sound",
+                "TV lines on screen",
+                "TV cracked screen",
+                "TV turning off by itself",
+                "TV remote control not working",
+                "TV not connecting to Wi-Fi",
+                "TV not recognizing HDMI inputs",
+                "TV not turning on",
+                "TV displaying error messages",
+                "TV blank screen",
+                "TV distorted picture",
+                "TV flickering picture",
+                "TV frozen picture",
+                "TV pixelated picture",
+                "TV washed-out picture",
+                "TV colors incorrect",
+                "TV lines on screen",
+                "TV static",
+                "TV vertical lines",
+              ]}
+            />
+          )}
         </div>
       </div>
     </section>
@@ -183,7 +262,7 @@ const Service = ({ title, image, description, points, company }) => {
         }}
       ></div>
       <div
-        className="w-full h-[10rem] z-[1] bg-cover bg-no-repeat bg-center"
+        className="w-full h-[20rem] z-[1] bg-cover bg-no-repeat bg-center"
         style={{
           backgroundImage: `url(${image})`,
         }}

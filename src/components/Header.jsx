@@ -150,27 +150,46 @@ export default function Header({ company }) {
 const Sidebar = ({ company }) => {
   return (
     <Sheet>
-      <SheetTrigger>
+      <SheetTrigger className="flex items-center">
         <Menu size="24" />
       </SheetTrigger>
       <SheetContent className="w-[80vw]" side="left">
         <SheetHeader>
-          <SheetTitle>
-            <Link
-              href="/"
-              className={cn(
-                "text-2xl sm:text-3xl text-nowrap",
-                logoFont.className
-              )}
-            >
-              {logoName}
-            </Link>
+          <SheetTitle className="flex items-center justify-center">
+            {company === "Siemens" ? (
+              <Link href="/companies/siemens">
+                <Image
+                  src="/siemens.svg"
+                  width={150}
+                  height={50}
+                  alt="Siemens"
+                />
+              </Link>
+            ) : company === "Bosch" ? (
+              <Link href="/companies/bosch">{boschSvg}</Link>
+            ) : company === "Samsung" ? (
+              <Link href="/companies/samsung">{samsungSvg}</Link>
+            ) : company === "LG" ? (
+              <Link href="/companies/lg">
+                <Image src="/lg.svg" width={100} height={50} alt="LG" />
+              </Link>
+            ) : (
+              <Link
+                href="/"
+                className={cn(
+                  "text-2xl sm:text-3xl text-nowrap",
+                  logoFont.className
+                )}
+              >
+                {logoName}
+              </Link>
+            )}
           </SheetTitle>
-          <SheetDescription>
+          <SheetDescription className="text-start">
             At {logoName}, we provide the best services for your home appliances
             repair.
           </SheetDescription>
-          <div className="flex flex-col gap-5 py-5">
+          <div className="flex flex-col items-start gap-5 py-5">
             <Link
               className={cn(
                 "font-semibold transition-all ease-in duration-150",
@@ -205,6 +224,81 @@ const Sidebar = ({ company }) => {
             >
               About
             </Link>
+            {!company && (
+              <div className="flex flex-col gap-3">
+                <h1 className="font-semibold">Service Centers</h1>
+                <div className="flex flex-col gap-3 px-5 items-start border-l border-black/10">
+                  <Link
+                    className={cn(
+                      "font-semibold transition-all ease-in duration-150",
+                      company === "Siemens"
+                        ? "hover:text-siemensPrimary"
+                        : company === "Bosch"
+                        ? "hover:text-boschPrimary"
+                        : company === "Samsung"
+                        ? "hover:text-samsungPrimary"
+                        : company === "LG"
+                        ? "hover:text-lgPrimary"
+                        : "hover:text-primary"
+                    )}
+                    href="/companies/siemens"
+                  >
+                    Siemens
+                  </Link>
+                  <Link
+                    className={cn(
+                      "font-semibold transition-all ease-in duration-150",
+                      company === "Siemens"
+                        ? "hover:text-siemensPrimary"
+                        : company === "Bosch"
+                        ? "hover:text-boschPrimary"
+                        : company === "Samsung"
+                        ? "hover:text-samsungPrimary"
+                        : company === "LG"
+                        ? "hover:text-lgPrimary"
+                        : "hover:text-primary"
+                    )}
+                    href="/companies/bosch"
+                  >
+                    Bosch
+                  </Link>
+                  <Link
+                    className={cn(
+                      "font-semibold transition-all ease-in duration-150",
+                      company === "Siemens"
+                        ? "hover:text-siemensPrimary"
+                        : company === "Bosch"
+                        ? "hover:text-boschPrimary"
+                        : company === "Samsung"
+                        ? "hover:text-samsungPrimary"
+                        : company === "LG"
+                        ? "hover:text-lgPrimary"
+                        : "hover:text-primary"
+                    )}
+                    href="/companies/samsung"
+                  >
+                    Samsung
+                  </Link>
+                  <Link
+                    className={cn(
+                      "font-semibold transition-all ease-in duration-150",
+                      company === "Siemens"
+                        ? "hover:text-siemensPrimary"
+                        : company === "Bosch"
+                        ? "hover:text-boschPrimary"
+                        : company === "Samsung"
+                        ? "hover:text-samsungPrimary"
+                        : company === "LG"
+                        ? "hover:text-lgPrimary"
+                        : "hover:text-primary"
+                    )}
+                    href="/companies/lg"
+                  >
+                    LG
+                  </Link>
+                </div>
+              </div>
+            )}
             <Link
               className={cn(
                 "font-semibold transition-all ease-in duration-150",
