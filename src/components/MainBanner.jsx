@@ -6,7 +6,7 @@ export default function MainBanner({ company }) {
       <div className="w-full relative pt-[100px] h-full bg-black/75 text-white flex justify-center">
         <div className="flex flex-col gap-5 items-center text-center px-5 py-10">
           <p className="text-lg uppercase font-semibold">
-            Best{" "}
+            Quick{" "}
             <span
               className={
                 company === "Siemens"
@@ -20,9 +20,9 @@ export default function MainBanner({ company }) {
                   : "text-primary"
               }
             >
-              Appliances
+              Repairs
             </span>{" "}
-            repairs
+            Expert
           </p>
           <h1 className="text-3xl lg:text-5xl font-bold">
             We Are{" "}
