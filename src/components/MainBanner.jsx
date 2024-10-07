@@ -26,9 +26,9 @@ export default function MainBanner({ company }) {
                 : company === "Bosch"
                 ? "text-boschPrimary"
                 : company === "Samsung"
-                ? "text-yellow-300"
+                ? "text-gray-400"
                 : company === "LG"
-                ? "text-green-400"
+                ? "text-[#A50034]"
                 : "text-blue-500"
             }`}
           >
