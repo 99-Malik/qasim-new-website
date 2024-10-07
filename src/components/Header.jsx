@@ -61,7 +61,7 @@ export default function Header({ company }) {
             <Link
               href="/"
               className={cn(
-                "text-2xl sm:text-3xl text-nowrap",
+                "text-md sm:text-md text-nowrap",
                 logoFont.className
               )}
             >
