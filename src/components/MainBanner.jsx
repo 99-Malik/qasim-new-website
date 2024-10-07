@@ -17,7 +17,7 @@ export default function MainBanner({ company }) {
       {/* Content */}
       <div className="relative z-10 max-w-3xl p-6 text-center bg-gradient-to-r from-black to-transparent rounded-lg shadow-lg mx-6 lg:mx-12">
         {/* Header Text */}
-        <h2 className="text-4xl font-extrabold tracking-wide uppercase text-white">
+        <h2 className="text-xl font-extrabold tracking-wide uppercase text-white">
         Appliances
           <span
             className={`ml-2 ${
@@ -37,7 +37,7 @@ export default function MainBanner({ company }) {
         </h2>
 
         {/* Subtext */}
-        <p className="mt-4 text-lg text-gray-300">
+        <p className="mt-4 text-sm text-gray-300">
           We provide top-notch repair services for {company} appliances with a
           team of certified and experienced technicians.
         </p>
