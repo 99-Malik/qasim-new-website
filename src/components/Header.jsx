@@ -45,7 +45,17 @@ export default function Header({ company }) {
           <div className="block md:hidden">
             <Sidebar company={company} />
           </div>
-          {company === "Siemens" ? (
+          {company === "heaterRepair" ? (
+            <Link
+              href="/"
+              className={cn(
+                "text-md sm:text-md text-nowrap",
+                logoFont.className
+              )}
+            >
+              {logoName}
+            </Link>
+          ) : company === "Siemens" ? (
             <Link href="/companies/siemens">
               <Image src="/siemens.svg" width={150} height={50} alt="Siemens" />
             </Link>
@@ -77,12 +87,12 @@ export default function Header({ company }) {
                 company === "Siemens"
                   ? "hover:text-siemensPrimary"
                   : company === "Bosch"
-                  ? "hover:text-boschPrimary"
-                  : company === "Samsung"
-                  ? "hover:text-samsungPrimary"
-                  : company === "LG"
-                  ? "hover:text-lgPrimary"
-                  : "hover:text-primary"
+                    ? "hover:text-boschPrimary"
+                    : company === "Samsung"
+                      ? "hover:text-samsungPrimary"
+                      : company === "LG"
+                        ? "hover:text-lgPrimary"
+                        : "hover:text-primary"
               )}
               href="/"
             >
@@ -94,12 +104,12 @@ export default function Header({ company }) {
                 company === "Siemens"
                   ? "hover:text-siemensPrimary"
                   : company === "Bosch"
-                  ? "hover:text-boschPrimary"
-                  : company === "Samsung"
-                  ? "hover:text-samsungPrimary"
-                  : company === "LG"
-                  ? "hover:text-lgPrimary"
-                  : "hover:text-primary"
+                    ? "hover:text-boschPrimary"
+                    : company === "Samsung"
+                      ? "hover:text-samsungPrimary"
+                      : company === "LG"
+                        ? "hover:text-lgPrimary"
+                        : "hover:text-primary"
               )}
               href="/#about"
             >
@@ -111,12 +121,12 @@ export default function Header({ company }) {
                 company === "Siemens"
                   ? "hover:text-siemensPrimary"
                   : company === "Bosch"
-                  ? "hover:text-boschPrimary"
-                  : company === "Samsung"
-                  ? "hover:text-samsungPrimary"
-                  : company === "LG"
-                  ? "hover:text-lgPrimary"
-                  : "hover:text-primary"
+                    ? "hover:text-boschPrimary"
+                    : company === "Samsung"
+                      ? "hover:text-samsungPrimary"
+                      : company === "LG"
+                        ? "hover:text-lgPrimary"
+                        : "hover:text-primary"
               )}
               href="/#services"
             >
@@ -128,12 +138,12 @@ export default function Header({ company }) {
                 company === "Siemens"
                   ? "hover:text-siemensPrimary"
                   : company === "Bosch"
-                  ? "hover:text-boschPrimary"
-                  : company === "Samsung"
-                  ? "hover:text-samsungPrimary"
-                  : company === "LG"
-                  ? "hover:text-lgPrimary"
-                  : "hover:text-primary"
+                    ? "hover:text-boschPrimary"
+                    : company === "Samsung"
+                      ? "hover:text-samsungPrimary"
+                      : company === "LG"
+                        ? "hover:text-lgPrimary"
+                        : "hover:text-primary"
               )}
               href="/#contact"
             >
@@ -196,12 +206,12 @@ const Sidebar = ({ company }) => {
                 company === "Siemens"
                   ? "hover:text-siemensPrimary"
                   : company === "Bosch"
-                  ? "hover:text-boschPrimary"
-                  : company === "Samsung"
-                  ? "hover:text-samsungPrimary"
-                  : company === "LG"
-                  ? "hover:text-lgPrimary"
-                  : "hover:text-primary"
+                    ? "hover:text-boschPrimary"
+                    : company === "Samsung"
+                      ? "hover:text-samsungPrimary"
+                      : company === "LG"
+                        ? "hover:text-lgPrimary"
+                        : "hover:text-primary"
               )}
               href="/"
             >
@@ -213,12 +223,12 @@ const Sidebar = ({ company }) => {
                 company === "Siemens"
                   ? "hover:text-siemensPrimary"
                   : company === "Bosch"
-                  ? "hover:text-boschPrimary"
-                  : company === "Samsung"
-                  ? "hover:text-samsungPrimary"
-                  : company === "LG"
-                  ? "hover:text-lgPrimary"
-                  : "hover:text-primary"
+                    ? "hover:text-boschPrimary"
+                    : company === "Samsung"
+                      ? "hover:text-samsungPrimary"
+                      : company === "LG"
+                        ? "hover:text-lgPrimary"
+                        : "hover:text-primary"
               )}
               href="/#about"
             >
@@ -234,12 +244,12 @@ const Sidebar = ({ company }) => {
                       company === "Siemens"
                         ? "hover:text-siemensPrimary"
                         : company === "Bosch"
-                        ? "hover:text-boschPrimary"
-                        : company === "Samsung"
-                        ? "hover:text-samsungPrimary"
-                        : company === "LG"
-                        ? "hover:text-lgPrimary"
-                        : "hover:text-primary"
+                          ? "hover:text-boschPrimary"
+                          : company === "Samsung"
+                            ? "hover:text-samsungPrimary"
+                            : company === "LG"
+                              ? "hover:text-lgPrimary"
+                              : "hover:text-primary"
                     )}
                     href="/companies/siemens"
                   >
@@ -251,12 +261,12 @@ const Sidebar = ({ company }) => {
                       company === "Siemens"
                         ? "hover:text-siemensPrimary"
                         : company === "Bosch"
-                        ? "hover:text-boschPrimary"
-                        : company === "Samsung"
-                        ? "hover:text-samsungPrimary"
-                        : company === "LG"
-                        ? "hover:text-lgPrimary"
-                        : "hover:text-primary"
+                          ? "hover:text-boschPrimary"
+                          : company === "Samsung"
+                            ? "hover:text-samsungPrimary"
+                            : company === "LG"
+                              ? "hover:text-lgPrimary"
+                              : "hover:text-primary"
                     )}
                     href="/companies/bosch"
                   >
@@ -268,12 +278,12 @@ const Sidebar = ({ company }) => {
                       company === "Siemens"
                         ? "hover:text-siemensPrimary"
                         : company === "Bosch"
-                        ? "hover:text-boschPrimary"
-                        : company === "Samsung"
-                        ? "hover:text-samsungPrimary"
-                        : company === "LG"
-                        ? "hover:text-lgPrimary"
-                        : "hover:text-primary"
+                          ? "hover:text-boschPrimary"
+                          : company === "Samsung"
+                            ? "hover:text-samsungPrimary"
+                            : company === "LG"
+                              ? "hover:text-lgPrimary"
+                              : "hover:text-primary"
                     )}
                     href="/companies/samsung"
                   >
@@ -285,12 +295,12 @@ const Sidebar = ({ company }) => {
                       company === "Siemens"
                         ? "hover:text-siemensPrimary"
                         : company === "Bosch"
-                        ? "hover:text-boschPrimary"
-                        : company === "Samsung"
-                        ? "hover:text-samsungPrimary"
-                        : company === "LG"
-                        ? "hover:text-lgPrimary"
-                        : "hover:text-primary"
+                          ? "hover:text-boschPrimary"
+                          : company === "Samsung"
+                            ? "hover:text-samsungPrimary"
+                            : company === "LG"
+                              ? "hover:text-lgPrimary"
+                              : "hover:text-primary"
                     )}
                     href="/companies/lg"
                   >
@@ -305,12 +315,12 @@ const Sidebar = ({ company }) => {
                 company === "Siemens"
                   ? "hover:text-siemensPrimary"
                   : company === "Bosch"
-                  ? "hover:text-boschPrimary"
-                  : company === "Samsung"
-                  ? "hover:text-samsungPrimary"
-                  : company === "LG"
-                  ? "hover:text-lgPrimary"
-                  : "hover:text-primary"
+                    ? "hover:text-boschPrimary"
+                    : company === "Samsung"
+                      ? "hover:text-samsungPrimary"
+                      : company === "LG"
+                        ? "hover:text-lgPrimary"
+                        : "hover:text-primary"
               )}
               href="/#services"
             >
@@ -322,12 +332,12 @@ const Sidebar = ({ company }) => {
                 company === "Siemens"
                   ? "hover:text-siemensPrimary"
                   : company === "Bosch"
-                  ? "hover:text-boschPrimary"
-                  : company === "Samsung"
-                  ? "hover:text-samsungPrimary"
-                  : company === "LG"
-                  ? "hover:text-lgPrimary"
-                  : "hover:text-primary"
+                    ? "hover:text-boschPrimary"
+                    : company === "Samsung"
+                      ? "hover:text-samsungPrimary"
+                      : company === "LG"
+                        ? "hover:text-lgPrimary"
+                        : "hover:text-primary"
               )}
               href="/#contact"
             >

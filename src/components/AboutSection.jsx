@@ -32,7 +32,7 @@ export default function AboutSection({ company }) {
             </h1>
           </div>
           <span className="text-black/50 max-w-[80%]">
-            Approaching every job with the same level of professionalism and
+            Approaching every repair with the same level of professionalism and
             care. With years of dedicated experience, we are experts in our
             field.
           </span>
