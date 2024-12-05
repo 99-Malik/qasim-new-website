@@ -149,7 +149,7 @@ export default function ServicesSection({ company }) {
                     <Service
                         company={company}
                         title="Improper installation issues"
-                        image="/Solar-5.jpg"
+                        image="/solar-5.jpg"
                         description="Solar water heaters can develop issues over time. Our technicians are experts in repairing solar water heaters and can quickly diagnose the problem and fix it. Common issues include:"
                         points={[
                             "Solar water heater not starting to heat water",
