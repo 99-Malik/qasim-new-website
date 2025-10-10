@@ -30,7 +30,7 @@ export const GOOGLE_ADS_CONFIG = {
   CURRENCY: 'USD', // Change to your currency (USD, EUR, GBP, etc.)
 
   // Debug mode (set to false in production)
-  DEBUG: true, // Set to false when you're ready for production
+  DEBUG: false, // Set to false when you're ready for production
 };
 
 // Conversion tracking functions

@@ -108,7 +108,7 @@ export default function Footer({ company }) {
   ];
 
   const contactInfo = [
-    { icon: Phone, text: "+1 (555) 123-4567", href: "tel:+15551234567", tech: "Phone" },
+    { icon: Phone, text: "+971551827441", href: "tel:+971551827441", tech: "Phone" },
     { icon: Mail, text: "info@appliancerepair.com", href: "mailto:info@appliancerepair.com", tech: "Email" },
     { icon: MapPin, text: "123 Service Street, City, State 12345", href: "#", tech: "Location" },
     { icon: Clock, text: "24/7 Emergency Service Available", href: "#", tech: "24/7" }

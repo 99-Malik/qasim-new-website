@@ -11,16 +11,16 @@ export default function CallAndWhatsappButton({ company }) {
     <div className="flex items-center flex-wrap gap-2 text-white">
       <button
         className={cn(
-          "px-5 py-3 rounded-full flex items-center font-medium hover:bg-white transition-all ease-in duration-150 gap-2",
+          "px-5 py-3 rounded-full flex items-center font-medium hover:opacity-90 transition-all ease-in duration-150 gap-2",
           company === "Siemens"
-            ? "bg-siemensPrimary hover:text-black"
+            ? "bg-siemensPrimary text-white"
             : company === "Bosch"
-            ? "bg-boschPrimary hover:text-boschSecondary"
+            ? "bg-boschPrimary text-white"
             : company === "Samsung"
-            ? "bg-samsungPrimary hover:text-samsungSecondary"
+            ? "bg-samsungPrimary text-white"
             : company === "LG"
-            ? "bg-lgPrimary hover:text-lgSecondary"
-            : "bg-primary hover:text-secondary"
+            ? "bg-lgPrimary text-white"
+            : "bg-primary text-white"
         )}
         onClick={() => {
           // Track the conversion
@@ -34,16 +34,16 @@ export default function CallAndWhatsappButton({ company }) {
       </button>
       <button
         className={cn(
-          "px-5 py-3 rounded-full flex items-center font-medium hover:bg-white transition-all ease-in duration-150 gap-2",
+          "px-5 py-3 rounded-full flex items-center font-medium hover:opacity-90 transition-all ease-in duration-150 gap-2",
           company === "Siemens"
-            ? "text-siemensSecondary bg-black hover:text-black hover:bg-siemensSecondary"
+            ? "bg-green-500 text-white"
             : company === "Bosch"
-            ? " bg-boschSecondary text-white hover:text-boschSecondary"
+            ? "bg-green-500 text-white"
             : company === "Samsung"
-            ? "bg-white text-samsungPrimary hover:bg-samsungSecondary"
+            ? "bg-green-500 text-white"
             : company === "LG"
-            ? "bg-lgSecondary hover:bg-white hover:text-black"
-            : "bg-secondary hover:text-secondary"
+            ? "bg-green-500 text-white"
+            : "bg-green-500 text-white"
         )}
         onClick={() => {
           // Track the conversion

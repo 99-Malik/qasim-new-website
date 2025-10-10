@@ -234,7 +234,7 @@ export default function ContactSection({ company }) {
                       "px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-bold",
                       schedule.status === "Active" ? "bg-green-500/20 text-green-400" :
                       schedule.status === "Peak" ? "bg-yellow-500/20 text-yellow-400" :
-                      "bg-red-500/20 text-red-400"
+                      "bg-orange-500/20 text-orange-400"
                     )}>
                       {schedule.status}
                     </div>

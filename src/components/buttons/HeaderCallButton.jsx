@@ -9,18 +9,18 @@ export default function HeaderCallButton({ company }) {
   return (
     <button
     className={cn(
-      "px-2 py-2 md:px-10 md:py-3 text-sm md:text-base rounded-full text-white hover:bg-white hover:text-secondary bg-primary font-medium transition-all text-nowrap ease-in duration-150 flex items-center gap-1",
+      "px-2 py-2 md:px-10 md:py-3 text-sm md:text-base rounded-full text-white hover:opacity-90 bg-primary font-medium transition-all text-nowrap ease-in duration-150 flex items-center gap-1",
       company === "heaterRepair"
-        ? "bg-siemensPrimary hover:text-black"
+        ? "bg-siemensPrimary"
         : company === "Siemens"
-        ? "bg-siemensPrimary hover:text-black"
+        ? "bg-siemensPrimary"
         : company === "Bosch"
-        ? "bg-boschPrimary hover:text-boschSecondary"
+        ? "bg-boschPrimary"
         : company === "Samsung"
-        ? "bg-samsungPrimary hover:text-samsungSecondary"
+        ? "bg-samsungPrimary"
         : company === "LG"
-        ? "bg-lgPrimary hover:text-lgSecondary"
-        : "bg-primary hover:text-secondary"
+        ? "bg-lgPrimary"
+        : "bg-primary"
     )}
       onClick={() => {
         // Track the conversion
