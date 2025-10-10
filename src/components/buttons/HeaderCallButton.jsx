@@ -3,6 +3,7 @@
 import { phoneNumber } from "@/lib/phoneNumber";
 import { cn } from "@/lib/utils";
 import { Phone } from "lucide-react";
+import { ConversionTracker } from "@/utils/conversionTracking";
 
 export default function HeaderCallButton({ company }) {
   return (
@@ -22,6 +23,9 @@ export default function HeaderCallButton({ company }) {
         : "bg-primary hover:text-secondary"
     )}
       onClick={() => {
+        // Track the conversion
+        ConversionTracker.trackCall(phoneNumber, 'header', 50);
+        // Open phone dialer
         window.open(`tel:${phoneNumber}`);
       }}
     >

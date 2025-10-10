@@ -1,1 +1,1 @@
-export const logoName = "Appliances Repairs Expert";
+export const logoName = "Service Center Repairs";

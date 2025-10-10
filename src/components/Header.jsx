@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Protest_Guerrilla } from "next/font/google";
+import { Orbitron } from "next/font/google";
 import Link from "next/link";
 import {
   Sheet,
@@ -11,340 +11,314 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { Menu, X, Phone, MessageCircle, Zap, Wrench } from "lucide-react";
 import { logoName } from "@/lib/logoName";
 import HeaderCallButton from "./buttons/HeaderCallButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
-const logoFont = Protest_Guerrilla({
+const logoFont = Orbitron({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "700", "900"],
 });
 
 export default function Header({ company }) {
-  // change color of scrollbar when user scrolls
   const [scrollY, setScrollY] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleScroll = () => {
-    setScrollY(window.scrollY);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const getCompanyColors = () => {
+    switch (company) {
+      case "Siemens":
+        return {
+          primary: "text-siemensPrimary",
+          bg: "bg-siemensPrimary",
+          border: "border-siemensPrimary",
+          hover: "hover:bg-siemensPrimary/10"
+        };
+      case "Bosch":
+        return {
+          primary: "text-boschPrimary",
+          bg: "bg-boschPrimary",
+          border: "border-boschPrimary",
+          hover: "hover:bg-boschPrimary/10"
+        };
+      case "Samsung":
+        return {
+          primary: "text-samsungPrimary",
+          bg: "bg-samsungPrimary",
+          border: "border-samsungPrimary",
+          hover: "hover:bg-samsungPrimary/10"
+        };
+      case "LG":
+        return {
+          primary: "text-lgPrimary",
+          bg: "bg-lgPrimary",
+          border: "border-lgPrimary",
+          hover: "hover:bg-lgPrimary/10"
+        };
+      default:
+        return {
+          primary: "text-primary",
+          bg: "bg-primary",
+          border: "border-primary",
+          hover: "hover:bg-primary/10"
+        };
+    }
   };
 
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", handleScroll);
-  }
+  const colors = getCompanyColors();
+
   return (
     <header
       className={cn(
-        "z-50 bg-transparent fixed top-0 text-white w-full flex items-center justify-center",
-        scrollY > 100 ? "bg-white text-black shadow-md" : ""
+        "z-50 fixed top-0 w-full transition-all duration-700 ease-out",
+        scrollY > 50
+          ? "bg-gradient-to-r from-white via-gray-50 to-white shadow-2xl border-b-2 border-gray-200/50"
+          : "bg-gradient-to-r from-transparent via-black/20 to-transparent"
       )}
     >
-      <div className="w-full max-w-7xl px-5 py-4 flex gap-10 justify-between items-center">
-        <div className="flex items-center gap-2">
-          <div className="block md:hidden">
-            <Sidebar company={company} />
+      {/* Animated Background Elements - Hidden on mobile for performance */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
+        <div className="absolute top-0 left-1/4 w-32 h-32 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-0 right-1/4 w-24 h-24 bg-white/5 rounded-full blur-2xl animate-bounce"></div>
+      </div>
+
+      <div className="relative w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-18 lg:h-24">
+          {/* Mobile Menu Button - Always visible on mobile */}
+          <div className="block lg:hidden">
+            <MobileMenu company={company} colors={colors} />
           </div>
-          {company === "heaterRepair" ? (
-            <Link
-              href="/"
-              className={cn(
-                "text-md sm:text-md text-nowrap",
-                logoFont.className
+
+          {/* Logo Section - Responsive sizing */}
+          <div className="flex-1 flex justify-start lg:justify-start">
+            <div className="relative group">
+              {/* Logo Background Glow - Hidden on mobile */}
+              <div className={cn(
+                "absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm hidden sm:block",
+                colors.bg
+              )}></div>
+              
+              {company === "heaterRepair" ? (
+                <Link
+                  href="/"
+                  className={cn(
+                    "relative text-lg sm:text-xl lg:text-2xl xl:text-3xl font-black tracking-wider px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl border-2 border-transparent transition-all duration-500 group-hover:scale-105",
+                    logoFont.className,
+                    scrollY > 50 
+                      ? "text-gray-900 bg-white shadow-lg border-gray-200" 
+                      : "text-white bg-black/20 backdrop-blur-sm border-white/30"
+                  )}
+                >
+                  {logoName}
+                </Link>
+              ) : company === "Siemens" ? (
+                <Link href="/companies/siemens" className="relative transition-all duration-500 group-hover:scale-110 group-hover:rotate-2">
+                  <div className="p-1 sm:p-2 rounded-xl bg-white/10 backdrop-blur-sm">
+                    <Image 
+                      src="/siemens.svg" 
+                      width={120} 
+                      height={45} 
+                      alt="Siemens" 
+                      className="w-24 sm:w-32 lg:w-40 h-auto"
+                    />
+                  </div>
+                </Link>
+              ) : company === "Bosch" ? (
+                <Link href="/companies/bosch" className="relative transition-all duration-500 group-hover:scale-110 group-hover:rotate-2">
+                  <div className="p-1 sm:p-2 rounded-xl bg-white/10 backdrop-blur-sm">
+                    <div className="w-24 sm:w-32 lg:w-40 h-auto">
+                      {boschSvg}
+                    </div>
+                  </div>
+                </Link>
+              ) : company === "Samsung" ? (
+                <Link href="/companies/samsung" className="relative transition-all duration-500 group-hover:scale-110 group-hover:rotate-2">
+                  <div className="p-1 sm:p-2 rounded-xl bg-white/10 backdrop-blur-sm">
+                    <div className="w-24 sm:w-32 lg:w-40 h-auto">
+                      {samsungSvg}
+                    </div>
+                  </div>
+                </Link>
+              ) : company === "LG" ? (
+                <Link href="/companies/lg" className="relative transition-all duration-500 group-hover:scale-110 group-hover:rotate-2">
+                  <div className="p-1 sm:p-2 rounded-xl bg-white/10 backdrop-blur-sm">
+                    <Image 
+                      src="/lg.svg" 
+                      width={90} 
+                      height={45} 
+                      alt="LG" 
+                      className="w-20 sm:w-24 lg:w-30 h-auto"
+                    />
+                  </div>
+                </Link>
+              ) : (
+                <Link
+                  href="/"
+                  className={cn(
+                    "relative text-sm sm:text-sm lg:text-2xl xl:text-3xl font-black tracking-wider px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl border-2 border-transparent transition-all duration-500 group-hover:scale-105",
+                    logoFont.className,
+                    scrollY > 50 
+                      ? "text-gray-900 bg-white shadow-lg border-gray-200" 
+                      : "text-white bg-black/20 backdrop-blur-sm border-white/30"
+                  )}
+                >
+                  {logoName}
+                </Link>
               )}
-            >
-              {logoName}
-            </Link>
-          ) : company === "Siemens" ? (
-            <Link href="/companies/siemens">
-              <Image src="/siemens.svg" width={150} height={50} alt="Siemens" />
-            </Link>
-          ) : company === "Bosch" ? (
-            <Link href="/companies/bosch">{boschSvg}</Link>
-          ) : company === "Samsung" ? (
-            <Link href="/companies/samsung">{samsungSvg}</Link>
-          ) : company === "LG" ? (
-            <Link href="/companies/lg">
-              <Image src="/lg.svg" width={100} height={50} alt="LG" />
-            </Link>
-          ) : (
-            <Link
-              href="/"
-              className={cn(
-                "text-md sm:text-md text-nowrap",
-                logoFont.className
-              )}
-            >
-              {logoName}
-            </Link>
-          )}
-        </div>
-        <div className="flex items-center justify-center gap-5">
-          <div className="hidden md:flex items-center justify-center gap-5">
-            <Link
-              className={cn(
-                "font-semibold transition-all ease-in duration-150",
-                company === "Siemens"
-                  ? "hover:text-siemensPrimary"
-                  : company === "Bosch"
-                    ? "hover:text-boschPrimary"
-                    : company === "Samsung"
-                      ? "hover:text-samsungPrimary"
-                      : company === "LG"
-                        ? "hover:text-lgPrimary"
-                        : "hover:text-primary"
-              )}
-              href="/"
-            >
-              Home
-            </Link>
-            <Link
-              className={cn(
-                "font-semibold transition-all ease-in duration-150",
-                company === "Siemens"
-                  ? "hover:text-siemensPrimary"
-                  : company === "Bosch"
-                    ? "hover:text-boschPrimary"
-                    : company === "Samsung"
-                      ? "hover:text-samsungPrimary"
-                      : company === "LG"
-                        ? "hover:text-lgPrimary"
-                        : "hover:text-primary"
-              )}
-              href="/#about"
-            >
-              About
-            </Link>
-            <Link
-              className={cn(
-                "font-semibold transition-all ease-in duration-150",
-                company === "Siemens"
-                  ? "hover:text-siemensPrimary"
-                  : company === "Bosch"
-                    ? "hover:text-boschPrimary"
-                    : company === "Samsung"
-                      ? "hover:text-samsungPrimary"
-                      : company === "LG"
-                        ? "hover:text-lgPrimary"
-                        : "hover:text-primary"
-              )}
-              href="/#services"
-            >
-              Services
-            </Link>
-            <Link
-              className={cn(
-                "font-semibold transition-all ease-in duration-150",
-                company === "Siemens"
-                  ? "hover:text-siemensPrimary"
-                  : company === "Bosch"
-                    ? "hover:text-boschPrimary"
-                    : company === "Samsung"
-                      ? "hover:text-samsungPrimary"
-                      : company === "LG"
-                        ? "hover:text-lgPrimary"
-                        : "hover:text-primary"
-              )}
-              href="/#contact"
-            >
-              Contact
-            </Link>
+            </div>
           </div>
-          <HeaderCallButton company={company} />
+
+          {/* Desktop Navigation - Hidden on mobile */}
+          <nav className="hidden lg:flex items-center space-x-2">
+            {[
+              { name: "Home", href: "/", icon: Zap },
+              { name: "About", href: "/#about", icon: Wrench },
+              { name: "Services", href: "/#services", icon: Wrench },
+              { name: "Contact", href: "/#contact", icon: Phone }
+            ].map((item, index) => (
+              <Link
+                key={index}
+                className={cn(
+                  "relative group flex items-center space-x-2 px-4 xl:px-6 py-2 xl:py-3 rounded-2xl font-semibold transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 text-sm xl:text-base",
+                  scrollY > 50 
+                    ? "text-gray-700 hover:text-gray-900 hover:bg-gray-100" 
+                    : "text-white hover:text-white hover:bg-white/20"
+                )}
+                href={item.href}
+              >
+                <item.icon className="w-4 h-4 transition-transform duration-300 group-hover:rotate-12" />
+                <span className="hidden xl:inline">{item.name}</span>
+                <div className={cn(
+                  "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10",
+                  colors.bg
+                )}></div>
+              </Link>
+            ))}
+          </nav>
+
+          {/* CTA Buttons - Responsive sizing */}
+          
         </div>
       </div>
     </header>
   );
 }
 
-const Sidebar = ({ company }) => {
+const MobileMenu = ({ company, colors }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Sheet>
-      <SheetTrigger className="flex items-center">
-        <Menu size="24" />
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <SheetTrigger asChild>
+        <button className="p-2 rounded-lg hover:bg-white/10 transition-colors">
+          <Menu className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+        </button>
       </SheetTrigger>
-      <SheetContent className="w-[80vw]" side="left">
-        <SheetHeader>
-          <SheetTitle className="flex items-center justify-center">
-            {company === "Siemens" ? (
-              <Link href="/companies/siemens">
-                <Image
-                  src="/siemens.svg"
-                  width={150}
-                  height={50}
-                  alt="Siemens"
-                />
-              </Link>
-            ) : company === "Bosch" ? (
-              <Link href="/companies/bosch">{boschSvg}</Link>
-            ) : company === "Samsung" ? (
-              <Link href="/companies/samsung">{samsungSvg}</Link>
-            ) : company === "LG" ? (
-              <Link href="/companies/lg">
-                <Image src="/lg.svg" width={100} height={50} alt="LG" />
-              </Link>
-            ) : (
+      <SheetContent className="w-[280px] sm:w-[320px] md:w-[400px] bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 border-white/20">
+        <div className="flex flex-col h-full">
+          <div className="flex items-center justify-between mb-6 sm:mb-8">
+            <div className="flex items-center space-x-3">
+              {company === "heaterRepair" ? (
+                <Link
+                  href="/"
+                  className={cn("text-lg sm:text-xl font-bold text-white", logoFont.className)}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {logoName}
+                </Link>
+              ) : company === "Siemens" ? (
+                <Link href="/companies/siemens" onClick={() => setIsOpen(false)}>
+                  <Image src="/siemens.svg" width={100} height={35} alt="Siemens" className="w-20 sm:w-24" />
+                </Link>
+              ) : company === "Bosch" ? (
+                <Link href="/companies/bosch" onClick={() => setIsOpen(false)}>
+                  <div className="w-20 sm:w-24 h-auto">
+                    {boschSvg}
+                  </div>
+                </Link>
+              ) : company === "Samsung" ? (
+                <Link href="/companies/samsung" onClick={() => setIsOpen(false)}>
+                  <div className="w-20 sm:w-24 h-auto">
+                    {samsungSvg}
+                  </div>
+                </Link>
+              ) : company === "LG" ? (
+                <Link href="/companies/lg" onClick={() => setIsOpen(false)}>
+                  <Image src="/lg.svg" width={80} height={35} alt="LG" className="w-16 sm:w-20" />
+                </Link>
+              ) : (
+                <Link
+                  href="/"
+                  className={cn("text-lg sm:text-xl font-bold text-white", logoFont.className)}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {logoName}
+                </Link>
+              )}
+            </div>
+         
+          </div>
+
+          <nav className="flex-1 space-y-2">
+            {[
+              { name: "Home", href: "/", icon: Zap },
+              { name: "About", href: "/#about", icon: Wrench },
+              { name: "Services", href: "/#services", icon: Wrench },
+              { name: "Contact", href: "/#contact", icon: Phone }
+            ].map((item, index) => (
               <Link
-                href="/"
-                className={cn(
-                  "text-2xl sm:text-3xl text-nowrap",
-                  logoFont.className
-                )}
+                key={index}
+                href={item.href}
+                className="flex items-center space-x-3 px-4 py-3 text-base sm:text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-colors group"
+                onClick={() => setIsOpen(false)}
               >
-                {logoName}
+                <item.icon className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                <span>{item.name}</span>
               </Link>
-            )}
-          </SheetTitle>
-          <SheetDescription className="text-start">
-            At {logoName}, we provide the best services for your home appliances
-            repair.
-          </SheetDescription>
-          <div className="flex flex-col items-start gap-5 py-5">
-            <Link
-              className={cn(
-                "font-semibold transition-all ease-in duration-150",
-                company === "Siemens"
-                  ? "hover:text-siemensPrimary"
-                  : company === "Bosch"
-                    ? "hover:text-boschPrimary"
-                    : company === "Samsung"
-                      ? "hover:text-samsungPrimary"
-                      : company === "LG"
-                        ? "hover:text-lgPrimary"
-                        : "hover:text-primary"
-              )}
-              href="/"
-            >
-              Home
-            </Link>
-            <Link
-              className={cn(
-                "font-semibold transition-all ease-in duration-150",
-                company === "Siemens"
-                  ? "hover:text-siemensPrimary"
-                  : company === "Bosch"
-                    ? "hover:text-boschPrimary"
-                    : company === "Samsung"
-                      ? "hover:text-samsungPrimary"
-                      : company === "LG"
-                        ? "hover:text-lgPrimary"
-                        : "hover:text-primary"
-              )}
-              href="/#about"
-            >
-              About
-            </Link>
+            ))}
+
             {!company && (
-              <div className="flex flex-col gap-3">
-                <h1 className="font-semibold">Service Centers</h1>
-                <div className="flex flex-col gap-3 px-5 items-start border-l border-black/10">
-                  <Link
-                    className={cn(
-                      "font-semibold transition-all ease-in duration-150",
-                      company === "Siemens"
-                        ? "hover:text-siemensPrimary"
-                        : company === "Bosch"
-                          ? "hover:text-boschPrimary"
-                          : company === "Samsung"
-                            ? "hover:text-samsungPrimary"
-                            : company === "LG"
-                              ? "hover:text-lgPrimary"
-                              : "hover:text-primary"
-                    )}
-                    href="/companies/siemens"
-                  >
-                    Siemens
-                  </Link>
-                  <Link
-                    className={cn(
-                      "font-semibold transition-all ease-in duration-150",
-                      company === "Siemens"
-                        ? "hover:text-siemensPrimary"
-                        : company === "Bosch"
-                          ? "hover:text-boschPrimary"
-                          : company === "Samsung"
-                            ? "hover:text-samsungPrimary"
-                            : company === "LG"
-                              ? "hover:text-lgPrimary"
-                              : "hover:text-primary"
-                    )}
-                    href="/companies/bosch"
-                  >
-                    Bosch
-                  </Link>
-                  <Link
-                    className={cn(
-                      "font-semibold transition-all ease-in duration-150",
-                      company === "Siemens"
-                        ? "hover:text-siemensPrimary"
-                        : company === "Bosch"
-                          ? "hover:text-boschPrimary"
-                          : company === "Samsung"
-                            ? "hover:text-samsungPrimary"
-                            : company === "LG"
-                              ? "hover:text-lgPrimary"
-                              : "hover:text-primary"
-                    )}
-                    href="/companies/samsung"
-                  >
-                    Samsung
-                  </Link>
-                  <Link
-                    className={cn(
-                      "font-semibold transition-all ease-in duration-150",
-                      company === "Siemens"
-                        ? "hover:text-siemensPrimary"
-                        : company === "Bosch"
-                          ? "hover:text-boschPrimary"
-                          : company === "Samsung"
-                            ? "hover:text-samsungPrimary"
-                            : company === "LG"
-                              ? "hover:text-lgPrimary"
-                              : "hover:text-primary"
-                    )}
-                    href="/companies/lg"
-                  >
-                    LG
-                  </Link>
+              <div className="pt-6 border-t border-white/20">
+                <h3 className="px-4 text-sm font-semibold text-white/60 uppercase tracking-wider mb-3">
+                  AI Service Centers
+                </h3>
+                <div className="space-y-1">
+                  {[
+                    { name: "Siemens AI", href: "/companies/siemens" },
+                    { name: "Bosch Quantum", href: "/companies/bosch" },
+                    { name: "Samsung Smart", href: "/companies/samsung" },
+                    { name: "LG Precision", href: "/companies/lg" }
+                  ].map((service, index) => (
+                    <Link
+                      key={index}
+                      href={service.href}
+                      className="flex items-center px-4 py-2 text-sm text-white/80 hover:bg-white/10 rounded-lg transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {service.name}
+                    </Link>
+                  ))}
                 </div>
               </div>
             )}
-            <Link
-              className={cn(
-                "font-semibold transition-all ease-in duration-150",
-                company === "Siemens"
-                  ? "hover:text-siemensPrimary"
-                  : company === "Bosch"
-                    ? "hover:text-boschPrimary"
-                    : company === "Samsung"
-                      ? "hover:text-samsungPrimary"
-                      : company === "LG"
-                        ? "hover:text-lgPrimary"
-                        : "hover:text-primary"
-              )}
-              href="/#services"
-            >
-              Services
-            </Link>
-            <Link
-              className={cn(
-                "font-semibold transition-all ease-in duration-150",
-                company === "Siemens"
-                  ? "hover:text-siemensPrimary"
-                  : company === "Bosch"
-                    ? "hover:text-boschPrimary"
-                    : company === "Samsung"
-                      ? "hover:text-samsungPrimary"
-                      : company === "LG"
-                        ? "hover:text-lgPrimary"
-                        : "hover:text-primary"
-              )}
-              href="/#contact"
-            >
-              Contact
-            </Link>
+          </nav>
+
+          <div className="pt-6 border-t border-white/20">
+            <div className="px-4">
+              <HeaderCallButton company={company} />
+            </div>
           </div>
-        </SheetHeader>
+        </div>
       </SheetContent>
     </Sheet>
   );

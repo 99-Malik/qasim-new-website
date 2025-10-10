@@ -2,172 +2,221 @@ import { cn } from "@/lib/utils";
 import React from "react";
 
 export default function WhyChooseUsSection({ company }) {
+  const getCompanyColors = () => {
+    switch (company) {
+      case "Siemens":
+        return {
+          primary: "text-siemensPrimary",
+          bg: "bg-siemensPrimary",
+          border: "border-siemensPrimary",
+          gradient: "from-siemensPrimary/20 to-siemensPrimary/5"
+        };
+      case "Bosch":
+        return {
+          primary: "text-boschPrimary",
+          bg: "bg-boschPrimary",
+          border: "border-boschPrimary",
+          gradient: "from-boschPrimary/20 to-boschPrimary/5"
+        };
+      case "Samsung":
+        return {
+          primary: "text-samsungPrimary",
+          bg: "bg-samsungPrimary",
+          border: "border-samsungPrimary",
+          gradient: "from-samsungPrimary/20 to-samsungPrimary/5"
+        };
+      case "LG":
+        return {
+          primary: "text-lgPrimary",
+          bg: "bg-lgPrimary",
+          border: "border-lgPrimary",
+          gradient: "from-lgPrimary/20 to-lgPrimary/5"
+        };
+      default:
+        return {
+          primary: "text-primary",
+          bg: "bg-primary",
+          border: "border-primary",
+          gradient: "from-primary/20 to-primary/5"
+        };
+    }
+  };
+
+  const colors = getCompanyColors();
+
+  const features = [
+    {
+      icon: expertTechnicians,
+      title: "Expert Technicians",
+      description: "Certified professionals with years of experience handling all major appliance brands and models.",
+      stats: "15+ Years"
+    },
+    {
+      icon: quality,
+      title: "Quality Service",
+      description: "We use only genuine parts and follow manufacturer specifications for reliable, long-lasting repairs.",
+      stats: "99.9% Success"
+    },
+    {
+      icon: fastService,
+      title: "Fast Response",
+      description: "Same-day service available with quick response times to get your appliances working again.",
+      stats: "24/7 Available"
+    },
+    {
+      icon: affordablePrice,
+      title: "Fair Pricing",
+      description: "Transparent pricing with no hidden fees. Get upfront quotes before any work begins.",
+      stats: "No Surprises"
+    },
+    {
+      icon: wideRange,
+      title: "All Brands",
+      description: "We repair all major appliance brands including Samsung, LG, Bosch, Siemens, and more.",
+      stats: "50+ Brands"
+    },
+    {
+      icon: satisfaction,
+      title: "Guaranteed Work",
+      description: "All repairs come with our satisfaction guarantee and warranty on parts and labor.",
+      stats: "100% Guaranteed"
+    }
+  ];
+
   return (
-    <div className="relative flex items-center justify-center bg-fixed bg-[url(/tools.jpg)] bg-center bg-cover bg-no-repeat w-full">
-      <div className="flex items-center justify-center w-full bg-black/75">
-        <div className="w-full flex flex-col gap-10 items-center justify-center max-w-7xl px-5 pt-48 pb-20">
-          <div className="flex flex-col items-center gap-2 justify-center text-center">
-            <h4
-              className={cn(
-                "font-semibold",
-                company === "Siemens"
-                  ? "text-siemensPrimary"
-                  : company === "Bosch"
-                  ? "text-boschPrimary"
-                  : company === "Samsung"
-                  ? "text-samsungPrimary"
-                  : company === "LG"
-                  ? "text-lgPrimary"
-                  : "text-primary"
-              )}
-            >
-              Our Qualities
-            </h4>
-            <h1 className="text-white font-bold text-4xl">Why Choose Us?</h1>
+    <section className="relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-12 sm:py-16 lg:py-20 xl:py-32 overflow-hidden">
+      {/* Modern Background Design */}
+      <div className="absolute inset-0">
+        {/* Animated mesh gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-pink-600/10 animate-pulse"></div>
+        
+        {/* Floating geometric elements */}
+        <div className="absolute top-10 sm:top-20 left-10 sm:left-20 w-16 sm:w-24 lg:w-32 h-16 sm:h-24 lg:h-32 border-2 border-white/20 rounded-full animate-spin"></div>
+        <div className="absolute top-20 sm:top-40 right-16 sm:right-32 w-12 sm:w-16 lg:w-24 h-12 sm:h-16 lg:h-24 bg-gradient-to-r from-white/10 to-transparent rotate-45 animate-bounce"></div>
+        <div className="absolute bottom-20 sm:bottom-32 left-1/4 sm:left-1/3 w-8 sm:w-12 lg:w-16 h-8 sm:h-12 lg:h-16 bg-white/5 rounded-full animate-ping"></div>
+        <div className="absolute top-1/2 right-1/6 sm:right-1/4 w-6 sm:w-8 lg:w-12 h-6 sm:h-8 lg:h-12 border-2 border-white/30 rotate-12 animate-spin"></div>
+        
+        {/* Hexagonal pattern overlay - Hidden on mobile for performance */}
+        <div className="absolute inset-0 opacity-5 hidden sm:block">
+          <div className="w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iaGV4IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTUwIDBMOTUgMjVWNTBINDAwVjI1WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNoZXgpIi8+PC9zdmc+')]"></div>
+        </div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+        {/* Modern Header */}
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+          <div className="inline-flex items-center px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-md border border-white/30 shadow-2xl mb-6 sm:mb-8">
+            <div className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 mr-2 sm:mr-3 text-white animate-pulse">⭐</div>
+            <span className="text-sm sm:text-base lg:text-lg font-bold text-white">Why Choose Us</span>
+            <div className="ml-2 sm:ml-3 w-1.5 sm:w-2 h-1.5 sm:h-2 bg-green-400 rounded-full animate-ping"></div>
           </div>
-          <div className="w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-6 sm:mb-8 leading-tight sm:leading-none">
+            <span className="block bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+              EXCEPTIONAL
+            </span>
+            <span className={cn("block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl", colors.primary)}>
+              SERVICE QUALITY
+            </span>
+          </h2>
+
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed font-light px-4">
+            Experience the difference with our professional repair service that combines
+            expertise, reliability, and customer satisfaction in every job.
+          </p>
+        </div>
+
+        {/* Modern Features Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          {features.map((feature, index) => (
             <div
-              className={cn(
-                "flex flex-col items-center justify-center rounded-md text-white p-10 text-center gap-2",
-                company === "Siemens"
-                  ? "bg-siemensPrimary"
-                  : company === "Bosch"
-                  ? "bg-boschPrimary"
-                  : company === "Samsung"
-                  ? "bg-samsungPrimary"
-                  : company === "LG"
-                  ? "bg-lgPrimary"
-                  : "bg-primary"
-              )}
+              key={index}
+              className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-2xl sm:rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-700 overflow-hidden border border-white/20 hover:border-white/40 transform hover:scale-105 hover:-translate-y-2"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              {expertTechnicians}
-              <span className="font-semibold text-xl">Expert Technicians</span>
-              <span className="text-white/80 text-xs lg:text-sm">
-                A top-notch appliance repair company employs certified and
-                experienced technicians who can handle a wide range of home
-                appliances.
-              </span>
+              {/* Feature Content */}
+              <div className="p-6 sm:p-8 lg:p-10">
+                {/* Icon and Stats */}
+                <div className="flex items-center justify-between mb-6 sm:mb-8">
+                  <div className="w-16 sm:w-18 lg:w-20 h-16 sm:h-18 lg:h-20 rounded-2xl sm:rounded-3xl bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                    {feature.icon}
+                  </div>
+                  <div className="text-right">
+                    <div className={cn(
+                      "text-2xl sm:text-3xl lg:text-4xl font-black",
+                      colors.primary
+                    )}>
+                      {feature.stats}
+                    </div>
+                    <div className="text-xs sm:text-sm text-white/60 font-semibold uppercase tracking-wider">
+                      Guarantee
+                    </div>
+                  </div>
+                </div>
+
+                {/* Title and Description */}
+                <div className="space-y-4 sm:space-y-6">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-gray-200 transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-200 leading-relaxed text-sm sm:text-base lg:text-lg">
+                    {feature.description}
+                  </p>
+                </div>
+
+                {/* Hover Effect Indicator */}
+                <div className="mt-6 sm:mt-8 flex items-center text-white/60 group-hover:text-white transition-colors">
+                  <div className="w-8 h-0.5 bg-current mr-3 group-hover:w-12 transition-all duration-500"></div>
+                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider">
+                    Learn More
+                  </span>
+                </div>
+              </div>
+
+              {/* Hover Effect Border */}
+              <div className={cn(
+                "absolute inset-0 rounded-2xl sm:rounded-3xl border-2 transition-all duration-500",
+                colors.border,
+                "opacity-0 group-hover:opacity-100 shadow-2xl"
+              )} />
+
+              {/* Animated Background Glow */}
+              <div className={cn(
+                "absolute -inset-2 sm:-inset-4 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10",
+                colors.bg
+              )}></div>
             </div>
-            <div
-              className={cn(
-                "flex flex-col items-center justify-center rounded-md text-white p-10 text-center gap-2",
-                company === "Siemens"
-                  ? "bg-siemensPrimary"
-                  : company === "Bosch"
-                  ? "bg-boschPrimary"
-                  : company === "Samsung"
-                  ? "bg-samsungPrimary"
-                  : company === "LG"
-                  ? "bg-lgPrimary"
-                  : "bg-primary"
-              )}
-            >
-              {quality}
-              <span className="font-semibold text-xl">Quality of Service</span>
-              <span className="text-white/80 text-xs lg:text-sm">
-                A reputable appliance repair company is known for its quality of
-                service. They provide prompt and reliable repairs, ensuring that
-                your appliances are restored to their optimal condition.
-              </span>
-            </div>
-            <div
-              className={cn(
-                "flex flex-col items-center justify-center rounded-md text-white p-10 text-center gap-2",
-                company === "Siemens"
-                  ? "bg-siemensPrimary"
-                  : company === "Bosch"
-                  ? "bg-boschPrimary"
-                  : company === "Samsung"
-                  ? "bg-samsungPrimary"
-                  : company === "LG"
-                  ? "bg-lgPrimary"
-                  : "bg-primary"
-              )}
-            >
-              {fastService}
-              <span className="font-semibold text-xl">Fast Response time</span>
-              <span className="text-white/80 text-xs lg:text-sm">
-                A reliable appliance repair company offers quick response times
-                to address your appliance issues promptly. They understand the
-                importance of your appliances and strive to provide timely.
-              </span>
-            </div>
-            <div
-              className={cn(
-                "flex flex-col items-center justify-center rounded-md text-white p-10 text-center gap-2",
-                company === "Siemens"
-                  ? "bg-siemensPrimary"
-                  : company === "Bosch"
-                  ? "bg-boschPrimary"
-                  : company === "Samsung"
-                  ? "bg-samsungPrimary"
-                  : company === "LG"
-                  ? "bg-lgPrimary"
-                  : "bg-primary"
-              )}
-            >
-              {affordablePrice}
-              <span className="font-semibold text-xl">Affordable Pricing</span>
-              <span className="text-white/80 text-xs lg:text-sm">
-                A reputable appliance repair company offers competitive pricing
-                for their services. They provide transparent quotes and
-                affordable rates, ensuring that you get value for your money.
-              </span>
-            </div>
-            <div
-              className={cn(
-                "flex flex-col items-center justify-center rounded-md text-white p-10 text-center gap-2",
-                company === "Siemens"
-                  ? "bg-siemensPrimary"
-                  : company === "Bosch"
-                  ? "bg-boschPrimary"
-                  : company === "Samsung"
-                  ? "bg-samsungPrimary"
-                  : company === "LG"
-                  ? "bg-lgPrimary"
-                  : "bg-primary"
-              )}
-            >
-              {wideRange}
-              <span className="font-semibold text-xl">
-                Wide Range of Services
-              </span>
-              <span className="text-white/80 text-xs lg:text-sm">
-                A reliable appliance repair company offers a wide range of
-                services to cater to all your appliance repair needs. Whether
-                you need refrigerator repair, oven repair, or washer repair,
-                they have you covered.
-              </span>
-            </div>
-            <div
-              className={cn(
-                "flex flex-col items-center justify-center rounded-md text-white p-10 text-center gap-2",
-                company === "Siemens"
-                  ? "bg-siemensPrimary"
-                  : company === "Bosch"
-                  ? "bg-boschPrimary"
-                  : company === "Samsung"
-                  ? "bg-samsungPrimary"
-                  : company === "LG"
-                  ? "bg-lgPrimary"
-                  : "bg-primary"
-              )}
-            >
-              {satisfaction}
-              <span className="font-semibold text-xl">
-                Customer Satisfaction
-              </span>
-              <span className="text-white/80 text-xs lg:text-sm">
-                We are committed to providing exceptional customer service and
-                ensuring that our customers are satisfied with our work. Our
-                team goes above and beyond to meet your expectations.
-              </span>
+          ))}
+        </div>
+
+        {/* Bottom CTA Section */}
+        <div className="mt-12 sm:mt-16 lg:mt-20 text-center">
+          <div className="relative group">
+            <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-white/20 to-white/10 rounded-2xl sm:rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-white/20 shadow-2xl">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-4 sm:mb-6">
+                Ready to Experience Excellence?
+              </h3>
+              <p className="text-base sm:text-lg lg:text-xl text-gray-200 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
+                Join thousands of satisfied customers who trust us with their appliance repair needs.
+                Get professional service that exceeds expectations.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4">
+                <button className="group relative w-full sm:w-auto px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6 bg-gradient-to-r from-white to-gray-100 text-gray-900 font-black text-lg sm:text-xl rounded-xl sm:rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
+                  <span className="relative z-10 flex items-center justify-center">
+                    Get Started Today
+                    <svg className="ml-2 sm:ml-3 w-5 sm:w-6 h-5 sm:h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="absolute top-0 z-10 w-full">{bottomSvg}</div>
-    </div>
+    </section>
   );
 }
 

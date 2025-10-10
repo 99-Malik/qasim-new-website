@@ -4,6 +4,7 @@ import { phoneNumber } from "@/lib/phoneNumber";
 import { cn } from "@/lib/utils";
 import { Phone } from "lucide-react";
 import Image from "next/image";
+import { ConversionTracker } from "@/utils/conversionTracking";
 
 export default function CallAndWhatsappButton({ company }) {
   return (
@@ -21,7 +22,12 @@ export default function CallAndWhatsappButton({ company }) {
             ? "bg-lgPrimary hover:text-lgSecondary"
             : "bg-primary hover:text-secondary"
         )}
-        onClick={() => window.open(`tel:${phoneNumber}`)}
+        onClick={() => {
+          // Track the conversion
+          ConversionTracker.trackCall(phoneNumber, 'main-banner', 50);
+          // Open phone dialer
+          window.open(`tel:${phoneNumber}`);
+        }}
       >
         <Phone size="18" />
         <span>Call Us</span>
@@ -39,9 +45,12 @@ export default function CallAndWhatsappButton({ company }) {
             ? "bg-lgSecondary hover:bg-white hover:text-black"
             : "bg-secondary hover:text-secondary"
         )}
-        onClick={() =>
-          window.open(`https://wa.me/${phoneNumber.replace(/\s/g, "")}`)
-        }
+        onClick={() => {
+          // Track the conversion
+          ConversionTracker.trackWhatsApp('', 'main-banner', 30);
+          // Open WhatsApp
+          window.open(`https://wa.me/${phoneNumber.replace(/\s/g, "")}`);
+        }}
       >
         <Image src="/whatsapp.svg" width={18} height={18} alt="whatsapp" />
         <span>Whatsapp</span>

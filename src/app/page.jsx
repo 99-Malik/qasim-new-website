@@ -6,6 +6,7 @@ import KeyFeatures from "@/components/KeyFeatures";
 import MainBanner from "@/components/MainBanner";
 import ServicesSection from "@/components/ServicesSection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
+import ConversionTest from "@/components/ConversionTest";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <ContactSection />
       <KeyFeatures />
       <Footer />
+      <ConversionTest />
     </>
   );
 }
