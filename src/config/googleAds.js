@@ -7,16 +7,16 @@ export const GOOGLE_ADS_CONFIG = {
   // Replace these with your actual values from Google Ads
   CONVERSION_IDS: {
     // Primary conversion for calls
-    CALL_CONVERSION_ID: 'AW-XXXXXXXXX', // Replace with your call conversion ID
-    CALL_CONVERSION_LABEL: 'XXXXXXXXX', // Replace with your call conversion label
+    CALL_CONVERSION_ID: 'AW-17604715721', // Replace with your call conversion ID
+    CALL_CONVERSION_LABEL: 'SNLjCMHg4aobEMnJyspB', // Replace with your call conversion label
     
     // Secondary conversion for WhatsApp
-    WHATSAPP_CONVERSION_ID: 'AW-XXXXXXXXX', // Replace with your WhatsApp conversion ID
-    WHATSAPP_CONVERSION_LABEL: 'XXXXXXXXX', // Replace with your WhatsApp conversion label
+    WHATSAPP_CONVERSION_ID: 'AW-17604715721', // Replace with your WhatsApp conversion ID
+    WHATSAPP_CONVERSION_LABEL: 'y-92CKzR06obEMnJyspB', // Replace with your WhatsApp conversion label
     
     // General contact conversion
-    CONTACT_CONVERSION_ID: 'AW-XXXXXXXXX', // Replace with your contact conversion ID
-    CONTACT_CONVERSION_LABEL: 'XXXXXXXXX', // Replace with your contact conversion label
+    CONTACT_CONVERSION_ID: 'AW-17604715721', // Replace with your contact conversion ID
+    CONTACT_CONVERSION_LABEL: 's27hCNKy06obEMnJyspB', // Replace with your contact conversion label
   },
 
   // Conversion values (in your currency)
