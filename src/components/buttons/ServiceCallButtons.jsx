@@ -7,10 +7,10 @@ import Image from "next/image";
 
 export default function ServiceCallButtons({ company }) {
   return (
-    <div className="flex items-center flex-wrap gap-2 text-white self-end">
+    <div className="flex items-center flex-wrap gap-2 text-white self-end relative z-10">
       <button
         className={cn(
-          "px-3 text-xs py-2 rounded-full flex items-center font-medium hover:bg-white transition-all ease-in duration-150 gap-1",
+          "px-3 text-xs py-2 rounded-full flex items-center font-medium hover:bg-white transition-all ease-in duration-150 gap-1 relative z-20 cursor-pointer",
           company === "Siemens"
             ? "bg-siemensPrimary hover:text-black"
             : company === "Bosch"
@@ -28,7 +28,7 @@ export default function ServiceCallButtons({ company }) {
       </button>
       <button
         className={cn(
-          "px-3 text-xs py-2 rounded-full flex items-center font-medium hover:bg-white transition-all ease-in duration-150 gap-1",
+          "px-3 text-xs py-2 rounded-full flex items-center font-medium hover:bg-white transition-all ease-in duration-150 gap-1 relative z-20 cursor-pointer",
           company === "Siemens"
             ? "text-siemensSecondary bg-black hover:text-black hover:bg-siemensSecondary"
             : company === "Bosch"

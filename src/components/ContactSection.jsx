@@ -54,7 +54,7 @@ export default function ContactSection({ company }) {
       icon: Phone,
       title: "Phone Support",
       description: "Speak with our expert technicians",
-      value: "+1 (555) 123-4567",
+      value: phoneNumber,
       action: "Call Now",
       tech: "Phone"
     },
@@ -62,25 +62,9 @@ export default function ContactSection({ company }) {
       icon: MessageCircle,
       title: "WhatsApp Support",
       description: "Quick messaging with our team",
-      value: "+1 (555) 123-4567",
+      value: phoneNumber,
       action: "Start Chat",
       tech: "WhatsApp"
-    },
-    {
-      icon: Mail,
-      title: "Email Support",
-      description: "Send detailed repair information",
-      value: "info@appliancerepair.com",
-      action: "Send Email",
-      tech: "Email"
-    },
-    {
-      icon: MapPin,
-      title: "Service Location",
-      description: "Find our service area",
-      value: "123 Service Street, City",
-      action: "View Location",
-      tech: "Location"
     }
   ];
 
@@ -184,10 +168,26 @@ export default function ContactSection({ company }) {
                       <p className="text-white font-semibold text-sm sm:text-base lg:text-lg">
                         {method.value}
                       </p>
-                      <button className={cn(
-                        "w-full inline-flex items-center justify-center px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-white font-black text-sm sm:text-base lg:text-lg transition-all duration-500 group-hover:scale-105",
-                        colors.bg
-                      )}>
+                      <button 
+                        className={cn(
+                          "w-full inline-flex items-center justify-center px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-white font-black text-sm sm:text-base lg:text-lg transition-all duration-500 group-hover:scale-105",
+                          colors.bg
+                        )}
+                        onClick={() => {
+                          if (method.tech === "Phone") {
+                            ConversionTracker.trackCall(phoneNumber, 'contact-section', 50);
+                            window.open(`tel:${phoneNumber}`);
+                          } else if (method.tech === "WhatsApp") {
+                            ConversionTracker.trackWhatsApp('', 'contact-section', 30);
+                            window.open(`https://wa.me/${phoneNumber.replace(/\s/g, "")}`);
+                          } else if (method.tech === "Email") {
+                            window.open(`mailto:${method.value}`);
+                          } else if (method.tech === "Location") {
+                            // You can add location functionality here
+                            console.log("Location clicked");
+                          }
+                        }}
+                      >
                         {method.action}
                         <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                       </button>
@@ -200,10 +200,7 @@ export default function ContactSection({ company }) {
             {/* Revolutionary CTA */}
             <div className="pt-6 sm:pt-8">
               <div className="relative group">
-                <div className={cn(
-                  "absolute -inset-2 sm:-inset-4 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl",
-                  colors.bg
-                )}></div>
+                <div className="absolute -inset-2 sm:-inset-4 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl bg-white/20"></div>
                 <CallAndWhatsappButton company={company} />
               </div>
             </div>
@@ -319,13 +316,18 @@ export default function ContactSection({ company }) {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 justify-center px-4">
                 <div className="relative group/btn">
-                  <div className={cn(
-                    "absolute -inset-1 sm:-inset-2 rounded-xl sm:rounded-2xl opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 blur-lg",
-                    colors.bg
-                  )}></div>
+                  <div className="absolute -inset-1 sm:-inset-2 rounded-xl sm:rounded-2xl opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 blur-lg bg-white/20"></div>
           <CallAndWhatsappButton company={company} />
                 </div>
-                <button className="group relative  lg:px-12 py-4 sm:py-5 lg:py-6 bg-gradient-to-r from-white to-gray-100 text-gray-900 font-black text-lg sm:text-xl rounded-xl sm:rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
+                <button 
+                  className="group relative px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6 bg-gradient-to-r from-white to-gray-100 text-gray-900 font-black text-lg sm:text-xl rounded-xl sm:rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2"
+                  onClick={() => {
+                    // Track the conversion
+                    ConversionTracker.trackCall(phoneNumber, 'contact-our-team', 50);
+                    // Open phone dialer
+                    window.open(`tel:${phoneNumber}`);
+                  }}
+                >
                   <span className="relative z-10 flex items-center justify-center">
                     Contact Our Team
                     <ArrowRight className="ml-2 sm:ml-3 w-5 sm:w-6 h-5 sm:h-6 group-hover:translate-x-2 transition-transform" />

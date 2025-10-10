@@ -175,10 +175,7 @@ export default function AboutSection({ company }) {
 
             <div className="pt-6 sm:pt-8">
               <div className="relative group">
-                <div className={cn(
-                  "absolute -inset-1 sm:-inset-2 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg",
-                  colors.bg
-                )}></div>
+                <div className="absolute -inset-1 sm:-inset-2 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg bg-white/20"></div>
                 <CallAndWhatsappButton company={company} />
               </div>
             </div>

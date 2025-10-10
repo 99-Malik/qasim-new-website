@@ -181,10 +181,7 @@ export default function WhyChooseUsSection({ company }) {
               )} />
 
               {/* Animated Background Glow */}
-              <div className={cn(
-                "absolute -inset-2 sm:-inset-4 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10",
-                colors.bg
-              )}></div>
+              <div className="absolute -inset-2 sm:-inset-4 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10 bg-white/20"></div>
             </div>
           ))}
         </div>

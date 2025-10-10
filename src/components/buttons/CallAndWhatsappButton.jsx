@@ -8,10 +8,10 @@ import { ConversionTracker } from "@/utils/conversionTracking";
 
 export default function CallAndWhatsappButton({ company }) {
   return (
-    <div className="flex items-center flex-wrap gap-2 text-white">
+    <div className="flex items-center flex-wrap gap-2 text-white relative z-10">
       <button
         className={cn(
-          "px-5 py-3 rounded-full flex items-center font-medium hover:opacity-90 transition-all ease-in duration-150 gap-2",
+          "px-5 py-3 rounded-full flex items-center font-medium hover:opacity-90 transition-all ease-in duration-150 gap-2 relative z-20 cursor-pointer",
           company === "Siemens"
             ? "bg-siemensPrimary text-white"
             : company === "Bosch"
@@ -34,7 +34,7 @@ export default function CallAndWhatsappButton({ company }) {
       </button>
       <button
         className={cn(
-          "px-5 py-3 rounded-full flex items-center font-medium hover:opacity-90 transition-all ease-in duration-150 gap-2",
+          "px-5 py-3 rounded-full flex items-center font-medium hover:opacity-90 transition-all ease-in duration-150 gap-2 relative z-20 cursor-pointer",
           company === "Siemens"
             ? "bg-green-500 text-white"
             : company === "Bosch"

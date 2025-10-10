@@ -1,3 +1,5 @@
+"use client";
+
 import CallAndWhatsappButton from "./buttons/CallAndWhatsappButton";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Wrench, Clock, Shield, Star, Zap, Sparkles, Target, Award } from "lucide-react";
@@ -121,14 +123,20 @@ export default function MainBanner({ company }) {
           <div className="space-y-6 sm:space-y-8">
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
               <div className="relative group w-full sm:w-auto">
-                <div className={cn(
-                  "absolute -inset-1 sm:-inset-2 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg",
-                  colors.bg
-                )}></div>
+                <div className="absolute -inset-1 sm:-inset-2 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg bg-white/20"></div>
                 <CallAndWhatsappButton company={company} />
               </div>
               
-              <button className="group relative w-full sm:w-auto px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6 bg-gradient-to-r from-white to-gray-100 text-gray-900 font-black text-lg sm:text-xl rounded-xl sm:rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
+              <button 
+                className="group relative w-full sm:w-auto px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6 bg-gradient-to-r from-white to-gray-100 text-gray-900 font-black text-lg sm:text-xl rounded-xl sm:rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2"
+                onClick={() => {
+                  // Scroll to about section
+                  const aboutSection = document.getElementById('about');
+                  if (aboutSection) {
+                    aboutSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
                 <span className="relative z-10 flex items-center justify-center">
                         Learn More
                   <ArrowRight className="ml-2 sm:ml-3 w-5 sm:w-6 h-5 sm:h-6 group-hover:translate-x-2 transition-transform" />

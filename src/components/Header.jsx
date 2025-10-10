@@ -103,10 +103,7 @@ export default function Header({ company }) {
           <div className="flex-1 flex justify-start lg:justify-start">
             <div className="relative group">
               {/* Logo Background Glow - Hidden on mobile */}
-              <div className={cn(
-                "absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm hidden sm:block",
-                colors.bg
-              )}></div>
+              <div className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm hidden sm:block bg-white/20"></div>
               
               {company === "heaterRepair" ? (
                 <Link
@@ -198,10 +195,7 @@ export default function Header({ company }) {
               >
                 <item.icon className="w-4 h-4 transition-transform duration-300 group-hover:rotate-12" />
                 <span className="hidden xl:inline">{item.name}</span>
-                <div className={cn(
-                  "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10",
-                  colors.bg
-                )}></div>
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 bg-white/20"></div>
               </Link>
             ))}
           </nav>

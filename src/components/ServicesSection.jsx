@@ -333,10 +333,7 @@ const RevolutionaryServiceCard = ({ service, company, colors, index }) => {
         {/* Revolutionary CTA Button */}
         <div className="pt-4 sm:pt-6 border-t border-white/20">
           <div className="relative group/btn">
-            <div className={cn(
-              "absolute -inset-1 rounded-xl sm:rounded-2xl opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 blur-sm",
-              colors.bg
-            )}></div>
+            <div className="absolute -inset-1 rounded-xl sm:rounded-2xl opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 blur-sm bg-white/20"></div>
         <ServiceCallButtons company={company} />
           </div>
         </div>
@@ -350,10 +347,7 @@ const RevolutionaryServiceCard = ({ service, company, colors, index }) => {
       )} />
 
       {/* Animated Background Glow */}
-      <div className={cn(
-        "absolute -inset-2 sm:-inset-4 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10",
-        colors.bg
-      )}></div>
+      <div className="absolute -inset-2 sm:-inset-4 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl -z-10 bg-white/20"></div>
     </div>
   );
 };
