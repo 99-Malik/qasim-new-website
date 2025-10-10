@@ -7,8 +7,8 @@ import { GOOGLE_ADS_CONFIG } from '../config/googleAds';
 
 const GoogleAnalytics = () => {
   // EDIT THESE VALUES - Replace with your actual IDs
-  const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // Replace with your Google Analytics ID
-  const GOOGLE_ADS_ID = 'AW-XXXXXXXXX'; // Replace with your Google Ads ID
+  const GA_MEASUREMENT_ID = 'G-9L8P0F5PEW'; // Replace with your Google Analytics ID
+  const GOOGLE_ADS_ID = 'AW-17604715721'; // Replace with your Google Ads ID
 
   // Don't render if no GA ID is provided
   if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') {
