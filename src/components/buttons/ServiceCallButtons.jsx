@@ -2,48 +2,45 @@
 
 import { phoneNumber } from "@/lib/phoneNumber";
 import { cn } from "@/lib/utils";
-import { Phone } from "lucide-react";
-import Image from "next/image";
+import { Phone, MessageCircle } from "lucide-react";
+import { ConversionTracker } from "@/utils/conversionTracking";
+import { getBrandColors } from "@/lib/brandConfig";
 
 export default function ServiceCallButtons({ company }) {
+  const colors = getBrandColors(company);
+
   return (
-    <div className="flex items-center flex-wrap gap-2 text-white self-end relative z-10">
+    <div className="flex items-center flex-wrap gap-2 text-white relative z-10">
       <button
         className={cn(
-          "px-3 text-xs py-2 rounded-full flex items-center font-medium hover:bg-white transition-all ease-in duration-150 gap-1 relative z-20 cursor-pointer",
-          company === "Siemens"
-            ? "bg-siemensPrimary hover:text-black"
-            : company === "Bosch"
-            ? "bg-boschPrimary hover:text-boschSecondary"
-            : company === "Samsung"
-            ? "bg-samsungPrimary hover:text-samsungSecondary"
-            : company === "LG"
-            ? "bg-lgPrimary hover:text-lgSecondary"
-            : "bg-primary hover:text-secondary"
+          "px-5 py-3 rounded-md flex items-center font-medium hover:opacity-90 transition-all ease-in duration-150 gap-2 relative z-20 cursor-pointer border-2 text-white",
+          colors.bg,
+          colors.border
         )}
-        onClick={() => window.open(`tel:${phoneNumber}`)}
+        onClick={() => {
+          // Track the conversion
+          ConversionTracker.trackCall(phoneNumber, 'services-section', 50);
+          // Open phone dialer
+          window.open(`tel:${phoneNumber}`);
+        }}
       >
-        <Phone size="15" />
-        <span>Call</span>
+        <Phone size="18" />
+        <span>Call Us</span>
       </button>
       <button
         className={cn(
-          "px-3 text-xs py-2 rounded-full flex items-center font-medium hover:bg-white transition-all ease-in duration-150 gap-1 relative z-20 cursor-pointer",
-          company === "Siemens"
-            ? "text-siemensSecondary bg-black hover:text-black hover:bg-siemensSecondary"
-            : company === "Bosch"
-            ? " bg-boschSecondary text-white hover:text-boschSecondary"
-            : company === "Samsung"
-            ? "bg-white text-samsungPrimary hover:bg-samsungSecondary"
-            : company === "LG"
-            ? "bg-lgSecondary hover:bg-white hover:text-black"
-            : "bg-secondary hover:text-secondary"
+          "px-5 py-3 rounded-md flex items-center font-medium hover:opacity-90 transition-all ease-in duration-150 gap-2 relative z-20 cursor-pointer border-2 text-white",
+          colors.bg,
+          colors.border
         )}
-        onClick={() =>
-          window.open(`https://wa.me/${phoneNumber.replace(/\s/g, "")}`)
-        }
+        onClick={() => {
+          // Track the conversion
+          ConversionTracker.trackWhatsApp('', 'services-section', 30);
+          // Open WhatsApp
+          window.open(`https://wa.me/${phoneNumber.replace(/\s/g, "")}`);
+        }}
       >
-        <Image src="/whatsapp.svg" width={15} height={15} alt="whatsapp" />
+        <MessageCircle size="18" />
         <span>Whatsapp</span>
       </button>
     </div>

@@ -16,19 +16,19 @@ module.exports = {
 		
         siemensPrimary: "#019997",
         siemensSecondary: "#FFFFFF",
-        siemensBlob: "#F0F4F9",
+        siemensBlob: "#E0F2F2", // Subtle teal tint - more visible
 
         boschPrimary: "#F80000",
         boschSecondary: "#2D3033",
-        boschBlob: "#F0F1F2",
+        boschBlob: "#FFF5F5", // Subtle red tint
 
         samsungPrimary: "#000000",
         samsungSecondary: "#FFFFFF",
-        samsungBlob: "#F7F7F7",
+        samsungBlob: "#F5F5F5", // Subtle gray tint
 
         lgPrimary: "#A50034",
         lgSecondary: "#000000",
-        lgBlob: "#F6F3EB",
+        lgBlob: "#FDF5F8", // Subtle pink/maroon tint
       },
       borderRadius: {
         lg: "var(--radius)",

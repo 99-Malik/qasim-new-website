@@ -16,6 +16,7 @@ import { logoName } from "@/lib/logoName";
 import HeaderCallButton from "./buttons/HeaderCallButton";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { getBrandConfig, getBrandColors } from "@/lib/brandConfig";
 
 const logoFont = Orbitron({
   subsets: ["latin"],
@@ -35,53 +36,17 @@ export default function Header({ company }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const getCompanyColors = () => {
-    switch (company) {
-      case "Siemens":
-        return {
-          primary: "text-siemensPrimary",
-          bg: "bg-siemensPrimary",
-          border: "border-siemensPrimary",
-          hover: "hover:bg-siemensPrimary/10"
-        };
-      case "Bosch":
-        return {
-          primary: "text-boschPrimary",
-          bg: "bg-boschPrimary",
-          border: "border-boschPrimary",
-          hover: "hover:bg-boschPrimary/10"
-        };
-      case "Samsung":
-        return {
-          primary: "text-samsungPrimary",
-          bg: "bg-samsungPrimary",
-          border: "border-samsungPrimary",
-          hover: "hover:bg-samsungPrimary/10"
-        };
-      case "LG":
-        return {
-          primary: "text-lgPrimary",
-          bg: "bg-lgPrimary",
-          border: "border-lgPrimary",
-          hover: "hover:bg-lgPrimary/10"
-        };
-      default:
-        return {
-          primary: "text-primary",
-          bg: "bg-primary",
-          border: "border-primary",
-          hover: "hover:bg-primary/10"
-        };
-    }
-  };
-
-  const colors = getCompanyColors();
+  const brandConfig = company ? getBrandConfig(company) : null;
+  const colors = getBrandColors(company);
+  const isBrandPage = !!company && company !== "heaterRepair";
 
   return (
     <header
       className={cn(
         "z-50 fixed top-0 w-full transition-all duration-700 ease-out",
-        scrollY > 50
+        isBrandPage
+          ? "bg-white shadow-md border-b border-gray-200"
+          : scrollY > 50
           ? "bg-gradient-to-r from-white via-gray-50 to-white shadow-2xl border-b-2 border-gray-200/50"
           : "bg-gradient-to-r from-transparent via-black/20 to-transparent"
       )}
@@ -102,14 +67,11 @@ export default function Header({ company }) {
           {/* Logo Section - Responsive sizing */}
           <div className="flex-1 flex justify-start lg:justify-start">
             <div className="relative group">
-              {/* Logo Background Glow - Hidden on mobile */}
-              <div className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm hidden sm:block bg-white/20"></div>
-              
               {company === "heaterRepair" ? (
                 <Link
                   href="/"
                   className={cn(
-                    "relative text-lg sm:text-xl lg:text-2xl xl:text-3xl font-black tracking-wider px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl border-2 border-transparent transition-all duration-500 group-hover:scale-105",
+                    "relative text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold tracking-wider px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl border-2 border-transparent transition-all duration-500 group-hover:scale-105",
                     logoFont.className,
                     scrollY > 50 
                       ? "text-gray-900 bg-white shadow-lg border-gray-200" 
@@ -118,51 +80,36 @@ export default function Header({ company }) {
                 >
                   {logoName}
                 </Link>
-              ) : company === "Siemens" ? (
-                <Link href="/companies/siemens" className="relative transition-all duration-500 group-hover:scale-110 group-hover:rotate-2">
-                  <div className="p-1 sm:p-2 rounded-xl bg-white/10 backdrop-blur-sm">
-                    <Image 
-                      src="/siemens.svg" 
-                      width={120} 
-                      height={45} 
-                      alt="Siemens" 
-                      className="w-24 sm:w-32 lg:w-40 h-auto"
-                    />
-                  </div>
-                </Link>
-              ) : company === "Bosch" ? (
-                <Link href="/companies/bosch" className="relative transition-all duration-500 group-hover:scale-110 group-hover:rotate-2">
-                  <div className="p-1 sm:p-2 rounded-xl bg-white/10 backdrop-blur-sm">
-                    <div className="w-24 sm:w-32 lg:w-40 h-auto">
-                      {boschSvg}
-                    </div>
-                  </div>
-                </Link>
-              ) : company === "Samsung" ? (
-                <Link href="/companies/samsung" className="relative transition-all duration-500 group-hover:scale-110 group-hover:rotate-2">
-                  <div className="p-1 sm:p-2 rounded-xl bg-white/10 backdrop-blur-sm">
-                    <div className="w-24 sm:w-32 lg:w-40 h-auto">
-                      {samsungSvg}
-                    </div>
-                  </div>
-                </Link>
-              ) : company === "LG" ? (
-                <Link href="/companies/lg" className="relative transition-all duration-500 group-hover:scale-110 group-hover:rotate-2">
-                  <div className="p-1 sm:p-2 rounded-xl bg-white/10 backdrop-blur-sm">
-                    <Image 
-                      src="/lg.svg" 
-                      width={90} 
-                      height={45} 
-                      alt="LG" 
-                      className="w-20 sm:w-24 lg:w-30 h-auto"
-                    />
+              ) : isBrandPage && brandConfig ? (
+                <Link 
+                  href={`/companies/${company.toLowerCase()}`} 
+                  className="relative transition-all duration-500 group-hover:scale-105"
+                >
+                  <div className="p-2 sm:p-3">
+                    {brandConfig.logo.component === "bosch" ? (
+                      <div className={cn("h-auto", brandConfig.logo.sizes?.desktop?.width || "w-24 sm:w-32 lg:w-40")} style={{ color: brandConfig.primary }}>
+                        {boschSvg}
+                      </div>
+                    ) : brandConfig.logo.component === "samsung" ? (
+                      <div className={cn("h-auto", brandConfig.logo.sizes?.desktop?.width || "w-24 sm:w-32 lg:w-40")} style={{ color: brandConfig.primary }}>
+                        {samsungSvg}
+                      </div>
+                    ) : (
+                      <Image 
+                        src={brandConfig.logo.path} 
+                        width={brandConfig.logo.sizes?.image?.width || 120} 
+                        height={brandConfig.logo.sizes?.image?.height || 40} 
+                        alt={`${brandConfig.name} Logo`}
+                        className={cn("h-auto", brandConfig.logo.sizes?.desktop?.width || "w-24 sm:w-32 lg:w-40")}
+                      />
+                    )}
                   </div>
                 </Link>
               ) : (
                 <Link
                   href="/"
                   className={cn(
-                    "relative text-sm sm:text-sm lg:text-2xl xl:text-3xl font-black tracking-wider px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl border-2 border-transparent transition-all duration-500 group-hover:scale-105",
+                    "relative text-sm sm:text-sm lg:text-2xl xl:text-3xl font-semibold tracking-wider px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl border-2 border-transparent transition-all duration-500 group-hover:scale-105",
                     logoFont.className,
                     scrollY > 50 
                       ? "text-gray-900 bg-white shadow-lg border-gray-200" 
@@ -175,30 +122,6 @@ export default function Header({ company }) {
             </div>
           </div>
 
-          {/* Desktop Navigation - Hidden on mobile */}
-          <nav className="hidden lg:flex items-center space-x-2">
-            {[
-              { name: "Home", href: "/", icon: Zap },
-              { name: "About", href: "/#about", icon: Wrench },
-              { name: "Services", href: "/#services", icon: Wrench },
-              { name: "Contact", href: "/#contact", icon: Phone }
-            ].map((item, index) => (
-              <Link
-                key={index}
-                className={cn(
-                  "relative group flex items-center space-x-2 px-4 xl:px-6 py-2 xl:py-3 rounded-2xl font-semibold transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 text-sm xl:text-base",
-                  scrollY > 50 
-                    ? "text-gray-700 hover:text-gray-900 hover:bg-gray-100" 
-                    : "text-white hover:text-white hover:bg-white/20"
-                )}
-                href={item.href}
-              >
-                <item.icon className="w-4 h-4 transition-transform duration-300 group-hover:rotate-12" />
-                <span className="hidden xl:inline">{item.name}</span>
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 bg-white/20"></div>
-              </Link>
-            ))}
-          </nav>
 
           {/* CTA Buttons - Responsive sizing */}
           
@@ -210,50 +133,74 @@ export default function Header({ company }) {
 
 const MobileMenu = ({ company, colors }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const brandConfig = company ? getBrandConfig(company) : null;
+  const isBrandPage = !!company && company !== "heaterRepair";
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <button className="p-2 rounded-lg hover:bg-white/10 transition-colors">
-          <Menu className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+        <button className={cn(
+          "p-2 rounded-lg transition-colors",
+          isBrandPage ? "hover:bg-gray-100" : "hover:bg-white/10"
+        )}>
+          <Menu className={cn(
+            "h-5 w-5 sm:h-6 sm:w-6",
+            isBrandPage ? "text-gray-900" : "text-white"
+          )} />
         </button>
       </SheetTrigger>
-      <SheetContent className="w-[280px] sm:w-[320px] md:w-[400px] bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 border-white/20">
+      <SheetContent className={cn(
+        "w-[280px] sm:w-[320px] md:w-[400px]",
+        isBrandPage 
+          ? "bg-white border-gray-200" 
+          : "bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 border-white/20"
+      )}>
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-between mb-6 sm:mb-8">
             <div className="flex items-center space-x-3">
               {company === "heaterRepair" ? (
                 <Link
                   href="/"
-                  className={cn("text-lg sm:text-xl font-bold text-white", logoFont.className)}
+                  className={cn(
+                    "text-lg sm:text-xl font-bold", 
+                    logoFont.className,
+                    isBrandPage ? "text-gray-900" : "text-white"
+                  )}
                   onClick={() => setIsOpen(false)}
                 >
                   {logoName}
                 </Link>
-              ) : company === "Siemens" ? (
-                <Link href="/companies/siemens" onClick={() => setIsOpen(false)}>
-                  <Image src="/siemens.svg" width={100} height={35} alt="Siemens" className="w-20 sm:w-24" />
-                </Link>
-              ) : company === "Bosch" ? (
-                <Link href="/companies/bosch" onClick={() => setIsOpen(false)}>
-                  <div className="w-20 sm:w-24 h-auto">
-                    {boschSvg}
-                  </div>
-                </Link>
-              ) : company === "Samsung" ? (
-                <Link href="/companies/samsung" onClick={() => setIsOpen(false)}>
-                  <div className="w-20 sm:w-24 h-auto">
-                    {samsungSvg}
-                  </div>
-                </Link>
-              ) : company === "LG" ? (
-                <Link href="/companies/lg" onClick={() => setIsOpen(false)}>
-                  <Image src="/lg.svg" width={80} height={35} alt="LG" className="w-16 sm:w-20" />
+              ) : isBrandPage && brandConfig ? (
+                <Link 
+                  href={`/companies/${company.toLowerCase()}`} 
+                  onClick={() => setIsOpen(false)}
+                >
+                  {brandConfig.logo.component === "bosch" ? (
+                    <div className={cn("h-auto", brandConfig.logo.sizes?.mobile?.width || "w-20 sm:w-24")} style={{ color: brandConfig.primary }}>
+                      {boschSvg}
+                    </div>
+                  ) : brandConfig.logo.component === "samsung" ? (
+                    <div className={cn("h-auto", brandConfig.logo.sizes?.mobile?.width || "w-20 sm:w-24")} style={{ color: brandConfig.primary }}>
+                      {samsungSvg}
+                    </div>
+                  ) : (
+                    <Image 
+                      src={brandConfig.logo.path} 
+                      width={brandConfig.logo.sizes?.image?.width || 100} 
+                      height={brandConfig.logo.sizes?.image?.height || 35} 
+                      alt={`${brandConfig.name} Logo`}
+                      className={cn("h-auto", brandConfig.logo.sizes?.mobile?.width || "w-20 sm:w-24")}
+                    />
+                  )}
                 </Link>
               ) : (
                 <Link
                   href="/"
-                  className={cn("text-lg sm:text-xl font-bold text-white", logoFont.className)}
+                  className={cn(
+                    "text-lg sm:text-xl font-bold", 
+                    logoFont.className,
+                    isBrandPage ? "text-gray-900" : "text-white"
+                  )}
                   onClick={() => setIsOpen(false)}
                 >
                   {logoName}
@@ -263,51 +210,11 @@ const MobileMenu = ({ company, colors }) => {
          
           </div>
 
-          <nav className="flex-1 space-y-2">
-            {[
-              { name: "Home", href: "/", icon: Zap },
-              { name: "About", href: "/#about", icon: Wrench },
-              { name: "Services", href: "/#services", icon: Wrench },
-              { name: "Contact", href: "/#contact", icon: Phone }
-            ].map((item, index) => (
-              <Link
-                key={index}
-                href={item.href}
-                className="flex items-center space-x-3 px-4 py-3 text-base sm:text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-colors group"
-                onClick={() => setIsOpen(false)}
-              >
-                <item.icon className="h-5 w-5 group-hover:scale-110 transition-transform" />
-                <span>{item.name}</span>
-              </Link>
-            ))}
 
-            {!company && (
-              <div className="pt-6 border-t border-white/20">
-                <h3 className="px-4 text-sm font-semibold text-white/60 uppercase tracking-wider mb-3">
-                  AI Service Centers
-                </h3>
-                <div className="space-y-1">
-                  {[
-                    { name: "Siemens AI", href: "/companies/siemens" },
-                    { name: "Bosch Quantum", href: "/companies/bosch" },
-                    { name: "Samsung Smart", href: "/companies/samsung" },
-                    { name: "LG Precision", href: "/companies/lg" }
-                  ].map((service, index) => (
-                    <Link
-                      key={index}
-                      href={service.href}
-                      className="flex items-center px-4 py-2 text-sm text-white/80 hover:bg-white/10 rounded-lg transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {service.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-          </nav>
-
-          <div className="pt-6 border-t border-white/20">
+          <div className={cn(
+            "pt-6 border-t",
+            isBrandPage ? "border-gray-200" : "border-white/20"
+          )}>
             <div className="px-4">
               <HeaderCallButton company={company} />
             </div>

@@ -1,54 +1,28 @@
 import { cn } from "@/lib/utils";
 import React from "react";
+import { getBrandColors, getBrandConfig } from "@/lib/brandConfig";
+import { Star } from "lucide-react";
 
 export default function WhyChooseUsSection({ company }) {
-  const getCompanyColors = () => {
-    switch (company) {
-      case "Siemens":
-        return {
-          primary: "text-siemensPrimary",
-          bg: "bg-siemensPrimary",
-          border: "border-siemensPrimary",
-          gradient: "from-siemensPrimary/20 to-siemensPrimary/5"
-        };
-      case "Bosch":
-        return {
-          primary: "text-boschPrimary",
-          bg: "bg-boschPrimary",
-          border: "border-boschPrimary",
-          gradient: "from-boschPrimary/20 to-boschPrimary/5"
-        };
-      case "Samsung":
-        return {
-          primary: "text-samsungPrimary",
-          bg: "bg-samsungPrimary",
-          border: "border-samsungPrimary",
-          gradient: "from-samsungPrimary/20 to-samsungPrimary/5"
-        };
-      case "LG":
-        return {
-          primary: "text-lgPrimary",
-          bg: "bg-lgPrimary",
-          border: "border-lgPrimary",
-          gradient: "from-lgPrimary/20 to-lgPrimary/5"
-        };
-      default:
-        return {
-          primary: "text-primary",
-          bg: "bg-primary",
-          border: "border-primary",
-          gradient: "from-primary/20 to-primary/5"
-        };
-    }
+  const colors = getBrandColors(company);
+  const brandConfig = company ? getBrandConfig(company) : null;
+  const isBrandPage = !!company;
+  
+  // Helper to convert hex to rgba
+  const hexToRgba = (hex, alpha) => {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
   };
-
-  const colors = getCompanyColors();
 
   const features = [
     {
       icon: expertTechnicians,
       title: "Expert Technicians",
-      description: "Certified professionals with years of experience handling all major appliance brands and models.",
+      description: isBrandPage 
+        ? `Certified professionals with years of experience handling ${company} appliance brands and models.`
+        : "Certified professionals with years of experience handling all major appliance brands and models.",
       stats: "15+ Years"
     },
     {
@@ -71,9 +45,11 @@ export default function WhyChooseUsSection({ company }) {
     },
     {
       icon: wideRange,
-      title: "All Brands",
-      description: "We repair all major appliance brands including Samsung, LG, Bosch, Siemens, and more.",
-      stats: "50+ Brands"
+      title: isBrandPage ? `${company} Specialists` : "All Brands",
+      description: isBrandPage
+        ? `We specialize in ${company} appliance repair with expert knowledge and genuine parts.`
+        : "We repair all major appliance brands including Samsung, LG, Bosch, Siemens, and more.",
+      stats: isBrandPage ? `${company} Expert` : "50+ Brands"
     },
     {
       icon: satisfaction,
@@ -84,45 +60,85 @@ export default function WhyChooseUsSection({ company }) {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-12 sm:py-16 lg:py-20 xl:py-32 overflow-hidden">
-      {/* Modern Background Design */}
+    <section className={cn(
+      "relative py-12 sm:py-16 lg:py-20 xl:py-32 overflow-hidden",
+      isBrandPage ? colors.blob : "bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
+    )}>
+      {/* Background */}
       <div className="absolute inset-0">
-        {/* Animated mesh gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-pink-600/10 animate-pulse"></div>
+        {isBrandPage && brandConfig ? (
+          <>
+            {/* Professional neutral base background */}
+            <div 
+              className="absolute inset-0" 
+              style={{ backgroundColor: company === "Bosch" || company === "LG" ? '#FFFFFF' : (brandConfig.accent || '#F0F4F9') }}
+            ></div>
+            {/* Brand-colored subtle gradient - reduced opacity for professional look */}
+            <div 
+              className="absolute inset-0" 
+              style={{ 
+                backgroundImage: `linear-gradient(to right, ${hexToRgba(brandConfig.primary, company === "Bosch" || company === "LG" ? 0.05 : 0.2)}, ${hexToRgba(brandConfig.primary, 0.02)})`
+              }}
+            ></div>
+            {/* Additional brand color tint - very subtle for professional look */}
+            <div 
+              className="absolute inset-0" 
+              style={{ backgroundColor: hexToRgba(brandConfig.primary, company === "Bosch" || company === "LG" ? 0.02 : 0.1) }}
+            ></div>
+          </>
+        ) : (
+          <>
+            {/* Animated mesh gradient */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-pink-600/10 animate-pulse"></div>
+          </>
+        )}
         
-        {/* Floating geometric elements */}
-        <div className="absolute top-10 sm:top-20 left-10 sm:left-20 w-16 sm:w-24 lg:w-32 h-16 sm:h-24 lg:h-32 border-2 border-white/20 rounded-full animate-spin"></div>
-        <div className="absolute top-20 sm:top-40 right-16 sm:right-32 w-12 sm:w-16 lg:w-24 h-12 sm:h-16 lg:h-24 bg-gradient-to-r from-white/10 to-transparent rotate-45 animate-bounce"></div>
-        <div className="absolute bottom-20 sm:bottom-32 left-1/4 sm:left-1/3 w-8 sm:w-12 lg:w-16 h-8 sm:h-12 lg:h-16 bg-white/5 rounded-full animate-ping"></div>
-        <div className="absolute top-1/2 right-1/6 sm:right-1/4 w-6 sm:w-8 lg:w-12 h-6 sm:h-8 lg:h-12 border-2 border-white/30 rotate-12 animate-spin"></div>
-        
-        {/* Hexagonal pattern overlay - Hidden on mobile for performance */}
-        <div className="absolute inset-0 opacity-5 hidden sm:block">
-          <div className="w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iaGV4IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTUwIDBMOTUgMjVWNTBINDAwVjI1WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNoZXgpIi8+PC9zdmc+')]"></div>
-        </div>
+        {!isBrandPage && (
+          <>
+            {/* Floating geometric elements */}
+            <div className="absolute top-10 sm:top-20 left-10 sm:left-20 w-16 sm:w-24 lg:w-32 h-16 sm:h-24 lg:h-32 border-2 border-white/20 rounded-full animate-spin"></div>
+            <div className="absolute top-20 sm:top-40 right-16 sm:right-32 w-12 sm:w-16 lg:w-24 h-12 sm:h-16 lg:h-24 bg-gradient-to-r from-white/10 to-transparent rotate-45 animate-bounce"></div>
+            <div className="absolute bottom-20 sm:bottom-32 left-1/4 sm:left-1/3 w-8 sm:w-12 lg:w-16 h-8 sm:h-12 lg:h-16 bg-white/5 rounded-full animate-ping"></div>
+            <div className="absolute top-1/2 right-1/6 sm:right-1/4 w-6 sm:w-8 lg:w-12 h-6 sm:h-8 lg:h-12 border-2 border-white/30 rotate-12 animate-spin"></div>
+            
+            {/* Hexagonal pattern overlay - Hidden on mobile for performance */}
+            <div className="absolute inset-0 opacity-5 hidden sm:block">
+              <div className="w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iaGV4IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTUwIDBMOTUgMjVWNTBINDAwVjI1WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNoZXgpIi8+PC9zdmc+')]"></div>
+            </div>
+          </>
+        )}
       </div>
 
       <div className="relative max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         {/* Modern Header */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
           <div className="inline-flex items-center px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-md border border-white/30 shadow-2xl mb-6 sm:mb-8">
-            <div className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 mr-2 sm:mr-3 text-white animate-pulse">⭐</div>
-            <span className="text-sm sm:text-base lg:text-lg font-bold text-white">Why Choose Us</span>
-            <div className="ml-2 sm:ml-3 w-1.5 sm:w-2 h-1.5 sm:h-2 bg-green-400 rounded-full animate-ping"></div>
+            <Star className={cn("w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 mr-2 sm:mr-3 animate-pulse", isBrandPage ? "text-gray-700" : "text-white")} />
+            <span className={cn("text-sm sm:text-base lg:text-lg font-bold", isBrandPage ? "text-gray-700" : "text-white")}>
+              {isBrandPage ? `Why Choose ${company.toUpperCase()}` : "Why Choose Us"}
+            </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-6 sm:mb-8 leading-tight sm:leading-none">
-            <span className="block bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-              EXCEPTIONAL
+          <h2 className={cn(
+            "text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-6 sm:mb-8 leading-tight sm:leading-none",
+            isBrandPage ? "text-gray-700" : "text-white"
+          )}>
+            <span className={cn(
+              "block",
+              isBrandPage ? colors.text : "bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent"
+            )}>
+              {isBrandPage ? company.toUpperCase() : "EXCEPTIONAL"}
             </span>
             <span className={cn("block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl", colors.primary)}>
-              SERVICE QUALITY
+              {isBrandPage ? "SERVICE CENTER" : "SERVICE QUALITY"}
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed font-light px-4">
-            Experience the difference with our professional repair service that combines
-            expertise, reliability, and customer satisfaction in every job.
+          <p className={cn("text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed font-light px-4", isBrandPage ? "text-gray-700" : "text-white")}>
+            {isBrandPage
+              ? `Experience the difference with our ${company} repair service that combines expertise, reliability, and customer satisfaction in every job.`
+              : "Experience the difference with our professional repair service that combines expertise, reliability, and customer satisfaction in every job."
+            }
           </p>
         </div>
 
@@ -138,17 +154,17 @@ export default function WhyChooseUsSection({ company }) {
               <div className="p-6 sm:p-8 lg:p-10">
                 {/* Icon and Stats */}
                 <div className="flex items-center justify-between mb-6 sm:mb-8">
-                  <div className="w-16 sm:w-18 lg:w-20 h-16 sm:h-18 lg:h-20 rounded-2xl sm:rounded-3xl bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                  <div className={cn("w-20 sm:w-18 lg:w-20 h-20 sm:h-18 lg:h-20 rounded-md backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-500", colors.bg)}>
                     {feature.icon}
                   </div>
                   <div className="text-right">
                     <div className={cn(
-                      "text-2xl sm:text-3xl lg:text-4xl font-black",
+                      "text-2xl sm:text-3xl lg:text-4xl font-semibold",
                       colors.primary
                     )}>
                       {feature.stats}
                     </div>
-                    <div className="text-xs sm:text-sm text-white/60 font-semibold uppercase tracking-wider">
+                    <div className={cn("text-xs sm:text-sm font-semibold uppercase tracking-wider", isBrandPage ? "text-gray-700" : "text-white")}>
                       Guarantee
                     </div>
                   </div>
@@ -156,16 +172,16 @@ export default function WhyChooseUsSection({ company }) {
 
                 {/* Title and Description */}
                 <div className="space-y-4 sm:space-y-6">
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-gray-200 transition-colors">
+                  <h3 className={cn("text-xl sm:text-2xl lg:text-3xl font-semibold transition-colors", isBrandPage ? "text-gray-700 group-hover:text-gray-600" : "text-white group-hover:text-gray-200")}>
                     {feature.title}
                   </h3>
-                  <p className="text-gray-200 leading-relaxed text-sm sm:text-base lg:text-lg">
+                  <p className={cn("leading-relaxed text-sm sm:text-base lg:text-lg", isBrandPage ? "text-gray-700" : "text-white")}>
                     {feature.description}
                   </p>
                 </div>
 
                 {/* Hover Effect Indicator */}
-                <div className="mt-6 sm:mt-8 flex items-center text-white/60 group-hover:text-white transition-colors">
+                <div className={cn("mt-6 sm:mt-8 flex items-center transition-colors", isBrandPage ? "text-gray-700 group-hover:text-gray-600" : "text-white group-hover:text-gray-200")}>
                   <div className="w-8 h-0.5 bg-current mr-3 group-hover:w-12 transition-all duration-500"></div>
                   <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider">
                     Learn More
@@ -191,22 +207,28 @@ export default function WhyChooseUsSection({ company }) {
           <div className="relative group">
             <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-white/20 to-white/10 rounded-2xl sm:rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-white/20 shadow-2xl">
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-4 sm:mb-6">
+              <h3 className={cn("text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4 sm:mb-6", isBrandPage ? "text-gray-700" : "text-white")}>
                 Ready to Experience Excellence?
               </h3>
-              <p className="text-base sm:text-lg lg:text-xl text-gray-200 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
-                Join thousands of satisfied customers who trust us with their appliance repair needs.
-                Get professional service that exceeds expectations.
+              <p className={cn("text-base sm:text-lg lg:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto px-4", isBrandPage ? "text-gray-700" : "text-white")}>
+                {isBrandPage
+                  ? `Join thousands of satisfied customers who trust us with their ${company} appliance repair needs. Get professional service that exceeds expectations.`
+                  : "Join thousands of satisfied customers who trust us with their appliance repair needs. Get professional service that exceeds expectations."
+                }
               </p>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4">
-                <button className="group relative w-full sm:w-auto px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6 bg-gradient-to-r from-white to-gray-100 text-gray-900 font-black text-lg sm:text-xl rounded-xl sm:rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
+                <button className="group relative w-full sm:w-auto px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6 bg-gradient-to-r from-white to-gray-100 text-gray-900  text-sm sm:text-xl rounded-md shadow-2xl hover:shadow-3xl font-semibold transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
                   <span className="relative z-10 flex items-center justify-center">
                     Get Started Today
                     <svg className="ml-2 sm:ml-3 w-5 sm:w-6 h-5 sm:h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  {isBrandPage ? (
+                    <div className={cn("absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500", colors.gradientFull)}></div>
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  )}
                 </button>
               </div>
             </div>
