@@ -10,7 +10,7 @@ export default function CallAndWhatsappButton({ company }) {
   const colors = getBrandColors(company);
   
   return (
-    <div className="flex items-center flex-wrap gap-2 text-white relative z-10">
+    <div className="flex items-center justify-center flex-wrap gap-2 text-white relative z-10">
       <button
         className={cn(
           "px-5 py-3 rounded-full flex items-center font-medium hover:opacity-90 transition-all ease-in duration-150 gap-2 relative z-20 cursor-pointer border-2",
