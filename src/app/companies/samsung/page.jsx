@@ -6,18 +6,29 @@ import KeyFeatures from "@/components/KeyFeatures";
 import MainBanner from "@/components/MainBanner";
 import ServicesSection from "@/components/ServicesSection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
+import FixedCallWhatsApp from "@/components/FixedCallWhatsApp";
 
 export default function Home() {
   return (
     <>
-      <Header company="Samsung" />
+      {/* <Header company="Samsung" />
       <MainBanner company="Samsung" />
       <AboutSection company="Samsung" />
       <WhyChooseUsSection company="Samsung" />
       <ServicesSection company="Samsung" />
       <ContactSection company="Samsung" />
       <KeyFeatures company="Samsung" />
-      <Footer company="Samsung" />
+      <Footer company="Samsung" /> */}
+
+<Header />
+      <MainBanner />
+      <AboutSection />
+      <WhyChooseUsSection />
+      <ServicesSection />
+      <ContactSection />
+      <KeyFeatures />
+      <Footer />
+      <FixedCallWhatsApp />
     </>
   );
 }
