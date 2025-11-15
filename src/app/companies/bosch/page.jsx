@@ -11,23 +11,15 @@ import FixedCallWhatsApp from "@/components/FixedCallWhatsApp";
 export default function Home() {
   return (
     <>
-      {/* <Header company="Bosch" />
+     <Header company="Bosch" />
       <MainBanner company="Bosch" />
       <AboutSection company="Bosch" />
       <WhyChooseUsSection company="Bosch" />
       <ServicesSection company="Bosch" />
       <ContactSection company="Bosch" />
       <KeyFeatures company="Bosch" />
-      <Footer company="Bosch" /> */}
-        <Header />
-      <MainBanner />
-      <AboutSection />
-      <WhyChooseUsSection />
-      <ServicesSection />
-      <ContactSection />
-      <KeyFeatures />
-      <Footer />
-      <FixedCallWhatsApp />
+      <Footer company="Bosch" /> 
+        
     </>
   );
 }
