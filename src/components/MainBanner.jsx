@@ -2,8 +2,10 @@
 
 import CallAndWhatsappButton from "./buttons/CallAndWhatsappButton";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Wrench, Clock, Shield, Star, Zap, Sparkles, Target, Award } from "lucide-react";
+import { ArrowRight, Wrench, Clock, Shield, Star, Zap, Sparkles, Target, Award, Phone, MessageCircle } from "lucide-react";
 import { getBrandColors, getBrandConfig } from "@/lib/brandConfig";
+import { phoneNumber } from "@/lib/phoneNumber";
+import { ConversionTracker } from "@/utils/conversionTracking";
 
 export default function MainBanner({ company }) {
   const colors = getBrandColors(company);
@@ -94,7 +96,7 @@ export default function MainBanner({ company }) {
                 "text-white/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.2)]"
               )}>
                 {company 
-                  ? `Professional ${company} appliance repair with our expert technicians, advanced diagnostic tools, and fast service delivery.`
+                  ? `Get Your ${company} appliances repair with our expert technicians, advanced diagnostic tools, and fast service delivery.`
                   : "Professional appliance repair with our expert technicians, advanced diagnostic tools, and fast service delivery."
                 }
               </p>
@@ -243,6 +245,69 @@ export default function MainBanner({ company }) {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Floating Call and WhatsApp Buttons */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        {/* WhatsApp Button */}
+        <button
+          className={cn(
+            "group relative p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 hover:shadow-3xl",
+            "text-white",
+            colors.bg,
+            colors.border,
+            "border-2"
+          )}
+          onClick={() => {
+            ConversionTracker.trackWhatsApp('', 'floating-whatsapp', 30);
+            window.open(`https://wa.me/${phoneNumber.replace(/\s/g, "")}`);
+          }}
+          title="WhatsApp Us"
+        >
+          <MessageCircle size={24} className="group-hover:scale-110 transition-transform duration-300" />
+          
+          {/* Pulse animation */}
+          <div className={cn(
+            "absolute inset-0 rounded-full animate-ping opacity-20",
+            colors.bg
+          )}></div>
+          
+          {/* Tooltip */}
+          <div className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
+            WhatsApp Us
+            <div className="absolute left-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-l-gray-900"></div>
+          </div>
+        </button>
+
+        {/* Call Button */}
+        <button
+          className={cn(
+            "group relative p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 hover:shadow-3xl",
+            "text-white",
+            colors.bg,
+            colors.border,
+            "border-2"
+          )}
+          onClick={() => {
+            ConversionTracker.trackCall(phoneNumber, 'floating-call', 50);
+            window.open(`tel:${phoneNumber}`);
+          }}
+          title="Call Us"
+        >
+          <Phone size={24} className="group-hover:scale-110 transition-transform duration-300" />
+          
+          {/* Pulse animation */}
+          <div className={cn(
+            "absolute inset-0 rounded-full animate-ping opacity-20",
+            colors.bg
+          )}></div>
+          
+          {/* Tooltip */}
+          <div className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
+            Call Us
+            <div className="absolute left-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-l-gray-900"></div>
+          </div>
+        </button>
       </div>
 
     </section>
