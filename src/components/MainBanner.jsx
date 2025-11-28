@@ -2,7 +2,7 @@
 
 import CallAndWhatsappButton from "./buttons/CallAndWhatsappButton";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Wrench, Clock, Shield, Star, Zap, Sparkles, Target, Award, Phone, MessageCircle } from "lucide-react";
+import { ArrowRight, Wrench, Clock, Star, Zap, Sparkles, Target, Award, Phone, MessageCircle } from "lucide-react";
 import { getBrandColors, getBrandConfig } from "@/lib/brandConfig";
 import { phoneNumber } from "@/lib/phoneNumber";
 import { ConversionTracker } from "@/utils/conversionTracking";
@@ -213,22 +213,6 @@ export default function MainBanner({ company }) {
                   ? "bg-white/90 border-gray-200/50"
                   : "bg-white/10 border-white/20"
               )}>
-                <Shield className={cn(
-                  "w-4 h-4",
-                  isBrandPage ? colors.text : "text-green-400"
-                )} />
-                <span className={cn(
-                  "text-sm font-medium",
-                  isBrandPage ? "text-gray-700" : "text-white"
-                )}>Licensed & Insured</span>
-              </div>
-              <div className={cn(
-                "flex items-center gap-2.5 px-5 py-2.5 rounded-full",
-                "backdrop-blur-md border",
-                isBrandPage 
-                  ? "bg-white/90 border-gray-200/50"
-                  : "bg-white/10 border-white/20"
-              )}>
                 <Clock className={cn(
                   "w-4 h-4",
                   isBrandPage ? colors.text : "text-blue-400"
@@ -238,10 +222,6 @@ export default function MainBanner({ company }) {
                   isBrandPage ? "text-gray-700" : "text-white"
                 )}>24/7 Emergency Service</span>
               </div>
-              
-              
-                
-       
             </div>
           </div>
         </div>

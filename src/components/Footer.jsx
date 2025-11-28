@@ -248,20 +248,7 @@ export default function Footer({ company }) {
 
         {/* Revolutionary Trust Indicators */}
         <div className={cn("py-8 sm:py-12 border-t", isBrandPage ? "border-gray-200" : "border-white/20")}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-center">
-            <div className="group flex items-center space-x-4 sm:space-x-6">
-              <div className={cn(
-                "w-12 sm:w-14 lg:w-16 h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500",
-                colors.bg
-              )}>
-                <Shield className="w-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8 text-white" />
-              </div>
-              <div>
-                <h4 className={cn("text-lg sm:text-xl font-bold", isBrandPage ? "text-gray-800" : "text-white")}>Licensed & Insured</h4>
-                <p className={cn("text-sm sm:text-base", isBrandPage ? "text-gray-600" : "text-gray-300")}>Certified technicians</p>
-              </div>
-            </div>
-
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 items-center">
             <div className="group flex items-center space-x-4 sm:space-x-6">
               <div className={cn(
                 "w-12 sm:w-14 lg:w-16 h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500",
@@ -275,7 +262,7 @@ export default function Footer({ company }) {
               </div>
             </div>
 
-            <div className="group flex items-center space-x-4 sm:space-x-6 sm:col-span-2 lg:col-span-1">
+            <div className="group flex items-center space-x-4 sm:space-x-6">
               <div className={cn(
                 "w-12 sm:w-14 lg:w-16 h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500",
                 colors.bg
