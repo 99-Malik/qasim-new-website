@@ -292,6 +292,21 @@ export default function Footer({ company }) {
 
         {/* Revolutionary Bottom Bar */}
         <div className={cn("py-6 sm:py-8 border-t", isBrandPage ? "border-gray-200" : "border-white/20")}>
+          {isBrandPage && brandConfig && (
+            <div className={cn(
+              "mb-4 sm:mb-6 text-center",
+              isBrandPage ? "text-gray-600" : "text-gray-300"
+            )}>
+              <p className={cn(
+                "text-xs sm:text-sm",
+                isBrandPage ? "text-gray-600" : "text-gray-300"
+              )}>
+                * We are a third-party service provider and are not affiliated with {brandConfig.name}.
+                <br />
+                {brandConfig.name} is a registered trademark of its respective owner.
+              </p>
+            </div>
+          )}
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 sm:space-y-6 md:space-y-0">
             <div className={cn("flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2", isBrandPage ? "text-gray-600" : "text-gray-300")}>
               <div className="flex items-center space-x-2">
