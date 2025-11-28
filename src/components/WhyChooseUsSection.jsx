@@ -21,8 +21,8 @@ export default function WhyChooseUsSection({ company }) {
       icon: expertTechnicians,
       title: "Expert Technicians",
       description: isBrandPage 
-        ? `Certified professionals with years of experience handling ${company} appliance brands and models.`
-        : "Certified professionals with years of experience handling all major appliance brands and models.",
+        ? `Experienced professionals with years of experience handling ${company} appliance brands and models.`
+        : "Experienced professionals with years of experience handling all major appliance brands and models.",
       stats: "15+ Years"
     },
     {
@@ -130,7 +130,7 @@ export default function WhyChooseUsSection({ company }) {
               {isBrandPage ? company.toUpperCase() : "EXCEPTIONAL"}
             </span>
             <span className={cn("block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl", colors.primary)}>
-              {isBrandPage ? "SERVICE CENTER" : "SERVICE QUALITY"}
+              {isBrandPage ? "REPAIR CENTER" : "SERVICE QUALITY"}
             </span>
           </h2>
 

@@ -87,7 +87,7 @@ export default function MainBanner({ company }) {
                 "text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
               )}>
                 <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-2 sm:mt-3 font-semibold">
-                  {company ? `${company.toUpperCase()} SERVICE CENTER` : "Home Appliance SERVICE CENTER"}
+                  {company ? `${company.toUpperCase()} REPAIR CENTER` : "Home Appliance REPAIR CENTER"}
                 </span>
               </h1>
 
@@ -108,23 +108,17 @@ export default function MainBanner({ company }) {
               { 
                 icon: Zap, 
                 title: "Expert Technicians", 
-                desc: company 
-                  ? `Specialized ${company} repair professionals` 
-                  : "Certified professionals with years of experience" 
+                desc: "Specialized repair professionals" 
               },
               { 
                 icon: Target, 
                 title: "Genuine Parts", 
-                desc: company 
-                  ? `Original ${company} replacement parts available` 
-                  : "Original manufacturer parts available" 
+                desc: "Original replacement parts available" 
               },
               { 
                 icon: Award, 
                 title: "Warranty Protection", 
-                desc: company 
-                  ? `${company} warranty maintained with service` 
-                  : "Manufacturer warranty maintained with service" 
+                desc: "Warranty maintained with service" 
               }
             ].map((feature, index) => (
               <div key={index} className="group">

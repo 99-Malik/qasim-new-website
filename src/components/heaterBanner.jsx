@@ -39,7 +39,7 @@ export default function MainBanner({ company }) {
         {/* Subtext */}
         <p className="mt-4 text-md text-center text-gray-300">
           We provide top-notch repair services for {company} appliances with a
-          team of certified and experienced technicians.
+          team of experienced technicians.
         </p>
 
         {/* Button Container with Responsive Horizontal Spacing */}

@@ -299,7 +299,10 @@ export default function Footer({ company }) {
               <div className="flex items-center space-x-2">
                 <Copyright className="w-4 sm:w-5 h-4 sm:h-5" />
                 <span className="text-sm sm:text-base lg:text-lg">
-                  2024 {isBrandPage && brandConfig ? brandConfig.name : logoName}. All rights reserved.
+                  {isBrandPage && brandConfig 
+                    ? `${brandConfig.name}.`
+                    : `2024 ${logoName}. All rights reserved.`
+                  }
                 </span>
               </div>
               <div className={cn(
