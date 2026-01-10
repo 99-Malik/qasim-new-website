@@ -6,24 +6,19 @@ export const GOOGLE_ADS_CONFIG = {
   // Google Ads Conversion IDs and Labels
   // Replace these with your actual values from Google Ads
   CONVERSION_IDS: {
-    // Primary conversion for calls
-    CALL_CONVERSION_ID: 'AW-17604715721', // Replace with your call conversion ID
-    CALL_CONVERSION_LABEL: 'SNLjCMHg4aobEMnJyspB', // Replace with your call conversion label
+    // Primary conversion for calls (from Google Ads)
+    CALL_CONVERSION_ID: 'AW-17604715721', // Your Google Ads account ID
+    CALL_CONVERSION_LABEL: 'YNwmCKLWxOAbEMnJyspB', // Your call conversion label from Google Ads
     
-    // Secondary conversion for WhatsApp
-    WHATSAPP_CONVERSION_ID: 'AW-17604715721', // Replace with your WhatsApp conversion ID
-    WHATSAPP_CONVERSION_LABEL: 'y-92CKzR06obEMnJyspB', // Replace with your WhatsApp conversion label
-    
-    // General contact conversion
-    CONTACT_CONVERSION_ID: 'AW-17604715721', // Replace with your contact conversion ID
-    CONTACT_CONVERSION_LABEL: 's27hCNKy06obEMnJyspB', // Replace with your contact conversion label
+    // Secondary conversion for WhatsApp (from Google Ads)
+    WHATSAPP_CONVERSION_ID: 'AW-17604715721', // Same Google Ads account ID
+    WHATSAPP_CONVERSION_LABEL: 'EUPvCMKl3cYbEMnJyspB', // Your WhatsApp conversion label from Google Ads
   },
 
   // Conversion values (in your currency)
   CONVERSION_VALUES: {
-    CALL_VALUE: 50, // Adjust based on your average call value
-    WHATSAPP_VALUE: 30, // Adjust based on your average WhatsApp lead value
-    CONTACT_VALUE: 25, // Adjust based on your average contact form value
+    CALL_VALUE: 15.0, // Value from your Google Ads conversion (15.0)
+    WHATSAPP_VALUE: 15.0, // Set same or different value for WhatsApp
   },
 
   // Currency code
@@ -82,15 +77,7 @@ export const trackWhatsAppConversion = (value = GOOGLE_ADS_CONFIG.CONVERSION_VAL
   }
 };
 
-export const trackContactConversion = (value = GOOGLE_ADS_CONFIG.CONVERSION_VALUES.CONTACT_VALUE) => {
-  const { CONTACT_CONVERSION_ID, CONTACT_CONVERSION_LABEL } = GOOGLE_ADS_CONFIG.CONVERSION_IDS;
-  
-  if (CONTACT_CONVERSION_ID && CONTACT_CONVERSION_LABEL) {
-    trackConversion(CONTACT_CONVERSION_ID, CONTACT_CONVERSION_LABEL, value, GOOGLE_ADS_CONFIG.CURRENCY);
-  } else {
-    console.warn('Contact conversion tracking not configured');
-  }
-};
+// Contact conversion removed - only using Call and WhatsApp
 
 // Enhanced tracking with additional data
 export const trackConversionWithData = (type, value, additionalData = {}) => {
@@ -101,9 +88,6 @@ export const trackConversionWithData = (type, value, additionalData = {}) => {
       break;
     case 'whatsapp':
       trackWhatsAppConversion(value);
-      break;
-    case 'contact':
-      trackContactConversion(value);
       break;
     default:
       console.warn('Unknown conversion type:', type);
