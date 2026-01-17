@@ -68,9 +68,9 @@ export const brandConfigs = {
       component: "siemens",
       path: "/siemens.svg",
       sizes: {
-        desktop: { width: "w-28 sm:w-36 lg:w-44" },
-        mobile: { width: "w-18 sm:w-18" },
-        image: { width: 90, height: 35 }
+        desktop: { width: "w-32 sm:w-40 lg:w-56" },
+        mobile: { width: "w-32 sm:w-28" },
+        image: { width: 200, height: 50 }
       }
     },
     colors: {
