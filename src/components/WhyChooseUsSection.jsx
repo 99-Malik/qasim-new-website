@@ -130,7 +130,7 @@ export default function WhyChooseUsSection({ company }) {
               {isBrandPage ? company.toUpperCase() : "EXCEPTIONAL"}
             </span>
             <span className={cn("block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl", colors.primary)}>
-              {isBrandPage ? "REPAIR CENTER" : "SERVICE QUALITY"}
+              {isBrandPage ? "REPAIR SERVICE CENTER AE" : "REPAIR SERVICE CENTER AE"}
             </span>
           </h2>
 

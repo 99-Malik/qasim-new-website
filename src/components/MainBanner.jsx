@@ -97,7 +97,7 @@ export default function MainBanner({ company }) {
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tighter text-white leading-[1.1]">
               <span className="block opacity-90 text-4xl sm:text-5xl lg:text-6xl mb-2 font-medium"></span>
               <span className="text-white drop-shadow-md">
-                {company ? `${company.toUpperCase()} SERVICE CENTER` : "HOME APPLIANCES"}
+                {company ? `${company.toUpperCase()} REPAIR SERVICE CENTER AE` : "REPAIR SERVICE CENTER AE"}
               </span>
             </h1>
 

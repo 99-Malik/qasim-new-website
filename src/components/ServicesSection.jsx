@@ -168,7 +168,7 @@ export default function ServicesSection({ company }) {
           <div className="inline-flex items-center  px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-md border border-white/30 shadow-2xl mb-6 sm:mb-8">
             <Cpu className={cn("w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 mr-2 sm:mr-3 animate-pulse", isBrandPage ? "text-gray-700" : "text-white")} />
             <span className={cn("text-sm sm:text-base lg:text-lg font-bold", isBrandPage ? "text-gray-700" : "text-white")}>
-              {isBrandPage ? `${company.toUpperCase()} REPAIR SERVICES` : "Professional Repair Service"}
+              {isBrandPage ? `${company.toUpperCase()} REPAIR SERVICE CENTER AE` : "Repair Service Center AE"}
             </span>
           </div>
 
@@ -183,7 +183,7 @@ export default function ServicesSection({ company }) {
               {isBrandPage ? company.toUpperCase() : "PROFESSIONAL"}
             </span>
             <span className={cn("block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl", colors.primary)}>
-              {isBrandPage ? "REPAIR SERVICES" : "REPAIR SERVICES"}
+              {isBrandPage ? "REPAIR SERVICE CENTER AE" : "REPAIR SERVICE CENTER AE"}
             </span>
           </h2>
 
