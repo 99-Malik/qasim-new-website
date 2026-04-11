@@ -78,7 +78,7 @@ export default function Footer({ company }) {
   ];
 
   const contactInfo = [
-    { icon: Phone, text: "+971562843310", href: "tel:+971562843310", tech: "Phone" },
+    { icon: Phone, text: "+971557145461", href: "tel:+971557145461", tech: "Phone" },
     { icon: Clock, text: "24/7 Emergency Service Available", href: "#", tech: "24/7" }
   ];
 
