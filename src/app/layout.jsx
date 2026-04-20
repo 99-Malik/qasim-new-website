@@ -17,11 +17,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        {/* Google Analytics and Google Ads Tracking */}
-        <GoogleAnalytics />
-      </head>
+      <head />
       <body className={cn("text-secondary", poppins.className)}>
+        <GoogleAnalytics />
         {children}
       </body>
     </html>
