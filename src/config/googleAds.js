@@ -8,11 +8,11 @@ export const GOOGLE_ADS_CONFIG = {
   CONVERSION_IDS: {
     // Primary conversion for calls (from Google Ads)
     CALL_CONVERSION_ID: 'AW-17604715721', // Your Google Ads account ID
-    CALL_CONVERSION_LABEL: 'YNwmCKLWxOAbEMnJyspB', // Your call conversion label from Google Ads
+    CALL_CONVERSION_LABEL: '_Kw8COzE2p8cEMnJyspB', // Phone Call Click conversion label
     
     // Secondary conversion for WhatsApp (from Google Ads)
     WHATSAPP_CONVERSION_ID: 'AW-17604715721', // Same Google Ads account ID
-    WHATSAPP_CONVERSION_LABEL: 'EUPvCMKl3cYbEMnJyspB', // Your WhatsApp conversion label from Google Ads
+    WHATSAPP_CONVERSION_LABEL: 'faRwCL_fxp8cEMnJyspB', // WhatsApp Click conversion label
   },
 
   // Conversion values (in your currency)
